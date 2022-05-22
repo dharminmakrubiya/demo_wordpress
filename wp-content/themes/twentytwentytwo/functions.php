@@ -149,3 +149,112 @@ add_action( 'wp_head', 'twentytwentytwo_preload_webfonts' );
 
 // Add block patterns
 require get_template_directory() . '/inc/block-patterns.php';
+
+
+
+
+
+
+
+
+
+
+// Step :-1 Create a Custom Post Type
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++ Create a Custom Post Type Demo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+/* Create a Custom Post Type function */
+
+
+function create_posttype() 
+{
+	// Register a Post Type
+	register_post_type( 'Demo',
+	
+	// CPT UI Plugin Using And Query To Create a Post Type
+
+	//Create a Multidimentional Array
+	
+	array(
+	  'labels' => array(
+	   'name' => __( 'Demo' ),
+	   'singular_name' => __( 'Demo' )
+	   
+	  ),
+	  'supports' => array(
+		'title', // post title
+		'editor', // post content
+		'author', // post author
+		'thumbnail', // featured images
+		'excerpt', // post excerpt
+		'custom-fields', // custom fields
+		'comments', // post comments
+		'revisions', // post revisions
+		'post-formats', // post formats
+	),
+	  'public' => true,
+	  'has_archive' => false,
+	  'rewrite' => array('slug' => 'Demo'),
+	 )
+	);
+	
+	}
+
+	add_action( 'init', 'create_posttype' );
+	/* Demo Custom Post Type End function*/
+
+
+
+	// ++++++++++++++++++++++++++++++++++++++++++++Custom Post Type Demo End++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+	//Step :- 2 Add a Custom Taxonomies Using a Wordpress Query
+
+
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Add a Custom Taxonomies +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+	function add_custom_taxonomies() {
+
+		// Add new "Locations" taxonomy to Posts
+
+		register_taxonomy('location', 'post', array(
+
+		  // Hierarchical taxonomy (like categories)
+		  'hierarchical' => true,
+
+		  // Displays Wordpress UI
+
+		  'labels' => array(
+			'name' => _x( 'Locations', 'taxonomy general name' ),
+			'singular_name' => _x( 'Location', 'taxonomy singular name' ),
+			'search_items' =>  __( 'Search Locations' ),
+			'all_items' => __( 'All Locations' ),
+			'parent_item' => __( 'Parent Location' ),
+			'parent_item_colon' => __( 'Parent Location:' ),
+			'edit_item' => __( 'Edit Location' ),
+			'update_item' => __( 'Update Location' ),
+			'add_new_item' => __( 'Add New Location' ),
+			'new_item_name' => __( 'New Location Name' ),
+			'menu_name' => __( 'Locations' ),
+		  ),
+
+		  //slugs used for this taxonomy
+		  'rewrite' => array(
+			'slug' => 'locations', 	
+			'with_front' => false, 
+			'hierarchical' => true 
+		  ),
+		));
+	  }
+	  add_action( 'init', 'add_custom_taxonomies', 0 );
+
+
+
+
+
+	// +++++++++++++++++++++++++++++++++++++++++++++++++++++++ Custom Taxonomies End +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
