@@ -109,6 +109,13 @@ get_header();
 	}
 	?>
 
+	
+
+	
+	
+
+	
+
 	<?php get_template_part( 'template-parts/pagination' ); ?>
 
 </main><!-- #site-content -->
@@ -117,3 +124,4 @@ get_header();
 
 <?php
 get_footer();
+
