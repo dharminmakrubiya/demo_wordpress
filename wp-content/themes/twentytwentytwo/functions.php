@@ -312,7 +312,8 @@ function create_posttype()
 		$my = new WP_Query(array (
 			'post_status' => 'publish',
 			'post_type' => 'post',
-			'post_per_page' => 6
+			'post_per_page' => 6,
+			's' => $SearchData
 		));
 
 

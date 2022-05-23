@@ -527,7 +527,8 @@ function create_posttype()
 		$my = new WP_Query(array (
 			'post_status' => 'publish',
 			'post_type' => 'post',
-			'post_per_page' => 6
+         's' => $searchData,
+         'posts_per_page' => 1,
 		));
 
 		//Using a while loop to show a available post in the list

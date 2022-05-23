@@ -9,8 +9,40 @@
 
 get_header(); ?>
 
+
+
 <div class="site-content">
+
+
+<?php
+
+$searchData = '';
+
+if ( $_GET['title']!= "") 
+{
+   $searchData = $_GET['title'];
+}
+
+?>
+
+<form method = "get"> 
+<!-- value = "<?php echo $_GET['title'] ?>" -->
+<input type="search" id="site-search" name="title">
+<button>Search</button>
+</form><br><br><br>
+
+
+
+     
+
+
+
    <div id="container" class="wrapper clear">
+
+
+
+
+ 
 
       <?php if (have_posts()) : ?>
 
@@ -27,6 +59,10 @@ get_header(); ?>
 
          <?php endwhile; ?>
 
+       
+        
+         
+
          <div >
 
 		
@@ -36,25 +72,21 @@ get_header(); ?>
 
       <?php endif; ?>
 
+     
+
    </div><!-- #container -->
+    
+
+   
+
+
    <div class="wrapper">
       <?php masonic_paging_nav(); ?>
    </div>
+
+ 
 </div><!-- #site-content -->
-
-<?php
-			if ( get_next_post_link()) {
-				echo '<div>'. get_next_post_link('<i class = "budicon-arrow-left-1"></i>' . esc_html__('Older Posts' , 'njengah')) . ' </div>';				
-			}
-
-			if (get_previous_posts_link()) {
-				echo '<div>' . get_previous_post_link(esc_html__('Newer Posts' , 'njengah') . ' <i class = "budicon-arrow-right-1"></i>') .' </div>';
-			}
-		?>
-	</div>
-	
-	
-	<?php my_number_pagination(); ?>
+<?php  my_number_pagination()?>
    
 <?php get_footer(); ?>
 
