@@ -17,15 +17,15 @@ get_header(); ?>
 <?php
 
    $searchData = '';
-   if ( $_GET['title']!= "") 
+   if ( $_GET['s']!= "") 
    {
-      $searchData = $_GET['title'];
+      $searchData = $_GET['s'];
    }
 ?>
 
 <form method = "get"> 
-<!-- value = "<?php echo $_GET['title'] ?>" -->
-<input type="search" id="site-search" name="title">
+<!-- value = "<?php echo $_GET['s'] ?>" -->
+<input type="search" id="" name="s">
 <button>Search</button>
 </form><br>
 

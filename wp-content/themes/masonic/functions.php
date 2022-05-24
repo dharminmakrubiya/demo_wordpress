@@ -530,7 +530,7 @@ function create_posttype()
 			'post_status' => 'publish',
 			'post_type' => 'post',
          'posts_per_page' => 1,
-         // 's' => $searchData
+         's' => $searchData
 		));
 
 		//Using a while loop to show a available post in the list
@@ -588,7 +588,6 @@ function create_posttype()
                'total' => $total_pages,
             ));
       }
-      echo "Hello";
    }
 
    // $args = array(
