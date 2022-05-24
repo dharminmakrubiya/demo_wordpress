@@ -588,6 +588,7 @@ function create_posttype()
                'total' => $total_pages,
             ));
       }
+      echo "Hello";
    }
 
    // $args = array(
