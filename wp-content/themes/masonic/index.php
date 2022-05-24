@@ -13,27 +13,24 @@ get_header(); ?>
 
 <div class="site-content">
 
-
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Search Using Method Get (Post Search)++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <?php
 
-$searchData = '';
-
-if ( $_GET['title']!= "") 
-{
-   $searchData = $_GET['title'];
-}
-
+   $searchData = '';
+   if ( $_GET['title']!= "") 
+   {
+      $searchData = $_GET['title'];
+   }
 ?>
 
 <form method = "get"> 
 <!-- value = "<?php echo $_GET['title'] ?>" -->
 <input type="search" id="site-search" name="title">
 <button>Search</button>
-</form><br><br><br>
+</form><br>
 
 
-
-     
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
 
@@ -80,13 +77,13 @@ if ( $_GET['title']!= "")
    
 
 
-   <div class="wrapper">
-      <?php masonic_paging_nav(); ?>
-   </div>
+</div><!-- #site-content -->
+
+<div class="wrapper">
+   <?php  my_number_pagination()?>
+</div>
 
  
-</div><!-- #site-content -->
-<?php  my_number_pagination()?>
    
 <?php get_footer(); ?>
 

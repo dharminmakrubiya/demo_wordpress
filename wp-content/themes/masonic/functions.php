@@ -520,6 +520,8 @@ function create_posttype()
 	
 	function showpost()
 	{
+
+      global $searchData; 
 		//Show the post title
 		$mypost = '<h5>Post Titles</h5>';
 
@@ -527,8 +529,8 @@ function create_posttype()
 		$my = new WP_Query(array (
 			'post_status' => 'publish',
 			'post_type' => 'post',
-         's' => $searchData,
          'posts_per_page' => 1,
+         // 's' => $searchData
 		));
 
 		//Using a while loop to show a available post in the list
