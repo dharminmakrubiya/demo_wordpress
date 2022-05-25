@@ -625,3 +625,105 @@ function create_posttype()
 	// }
 
    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Numeric Pagination End ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Create a Companies Categories++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+	function add_companies() {
+
+		// Add new "Companies" taxonomy to Posts
+
+		register_taxonomy('Companies', 'post', array(
+
+		  // Hierarchical taxonomy (like categories)
+		  'hierarchical' => true,
+
+		  // Displays Wordpress UI
+
+		  'labels' => array(
+			'name' => _x( 'Companies', 'taxonomy general name' ),
+			'singular_name' => _x( 'Companies', 'taxonomy singular name' ),
+			'search_items' =>  __( 'Search Companies' ),
+			'all_items' => __( 'All Companies' ),
+			'parent_item' => __( 'Parent Companies' ),
+			'parent_item_colon' => __( 'Parent Companies:' ),
+			'edit_item' => __( 'Edit Companies' ),
+			'update_item' => __( 'Update Companies' ),
+			'add_new_item' => __( 'Add New Companies' ),
+			'new_item_name' => __( 'New Companies Name' ),
+			'menu_name' => __( 'Companies' ),
+		  ),
+
+		  //slugs used for this taxonomy
+		  'rewrite' => array(
+			'slug' => 'Companies', 	
+			'with_front' => false, 
+			'hierarchical' => true 
+		  ),
+		));
+	  }
+	  add_action( 'init', 'add_companies', 0 );
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Companies ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function create_companies() 
+{
+	// Register a Post Type
+	register_post_type( 'Companies',
+	
+	// CPT UI Plugin Using And Query To Create a Post Type
+
+	//Create a Multidimentional Array
+	
+	array(
+	  'labels' => array(
+	   'name' => __( 'Companies' ),
+	   'singular_name' => __( 'Companies' )
+	   
+	  ),
+	  'supports' => array(
+		'title', // post title
+		'editor', // post content
+		'author', // post author
+		'thumbnail', // featured images
+		'excerpt', // post excerpt
+		'custom-fields', // custom fields
+		'comments', // post comments
+		'revisions', // post revisions
+		'post-formats', // post formats
+	),
+	  'public' => true,
+	  'has_archive' => false,
+	  'rewrite' => array('slug' => 'Companies'),
+	 )
+	);
+	
+	}
+
+	add_action( 'init', 'create_companies' );
+	/* Demo Custom Post Type End function*/
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
