@@ -9,6 +9,9 @@
 
 get_header(); ?>
 
+<?php
+
+?>
 
 
 <div class="site-content">
@@ -29,35 +32,37 @@ get_header(); ?>
 <button>Search</button>
 </form><br>
 
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-<!-- Show Categories Lists in Frontend-->
-<?php
-$categories = get_categories( array(
-    'orderby' => 'name',
-    'order'   => 'ASC'
-) );
-
-foreach( $categories as $category ) 
-{
- echo '<div><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';   
-} 
-
-?>
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
 
+
+ <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Show Categories List Frontend +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<!-- Show Categories Lists in Frontend-->
+<?php
+$c = get_categories(array('taxonomy'=>'Companies'));
+?>
+
+   <?php
+         
+         $categories = get_categories( array(
+            'orderby' => 'name',
+            'order'   => 'ASC',
+         ) );
+         
+         foreach( $categories as $category ) 
+         {
+            echo '<div><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';   
+         } 
+         
+         ?>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
    <div id="container" class="wrapper clear">
-
-
-
-
- 
 
       <?php if (have_posts()) : ?>
 
@@ -73,11 +78,7 @@ foreach( $categories as $category )
             ?>
 
          <?php endwhile; ?>
-
-       
-        
          
-
          <div >
 
 		

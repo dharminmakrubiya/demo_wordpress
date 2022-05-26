@@ -17,19 +17,9 @@ get_header(); ?>
 
             <?php get_template_part('content', 'single'); ?>
 
-            <?php masonic_post_nav(); ?>
-
-            <?php
-            // If comments are open or we have at least one comment, load up the comment template
-            if (comments_open() || get_comments_number()) :
-               comments_template();
-            endif;
-            ?>
-
          <?php endwhile; // end of the loop. ?>
       </div>
-      <?php get_sidebar(); ?>
-   </div><!-- #container -->
-</div><!-- .site-content clear -->
+   </div>
+</div>
 
 <?php get_footer(); ?>

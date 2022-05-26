@@ -263,6 +263,7 @@ function masonic_add_mod_hatom_data($content) {
 
 add_filter('the_content', 'masonic_add_mod_hatom_data');
 
+
 /*
  * Creating responsive video for posts/pages
  */
@@ -338,6 +339,9 @@ function masonic_meta_box_display_toggle() {
 }
 
 add_action( 'admin_footer', 'masonic_meta_box_display_toggle' );
+
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -523,14 +527,15 @@ function create_posttype()
 
       global $searchData; 
 		//Show the post title
-		$mypost = '<h5>Post Titles</h5>';
+		$mypost = '<h5>Companies List</h5>';
 
 		//featch wp_query
 		$my = new WP_Query(array (
 			'post_status' => 'publish',
 			'post_type' => 'post',
-         'posts_per_page' => 1,
-         's' => $searchData
+         	'posts_per_page' => 3,
+         	's' => $searchData,
+			 
 		));
 
 		//Using a while loop to show a available post in the list

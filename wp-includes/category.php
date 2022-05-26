@@ -24,7 +24,7 @@
  * @return array List of category objects.
  */
 function get_categories( $args = '' ) {
-	$defaults = array( 'taxonomy' => 'category' );
+	$defaults = array( 'taxonomy' => 'Companies' );
 	$args     = wp_parse_args( $args, $defaults );
 
 	/**
