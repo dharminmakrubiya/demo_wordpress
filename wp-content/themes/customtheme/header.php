@@ -17,7 +17,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-2 bg-dark text-white"">
   <div class="container">
-    <a class="navbar-brand text-white" href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a>
+    
+    <a class="navbar-brand text-white" href="<?php echo home_url(); ?>"><img width="50" height="50" src="http://mydemo.local/wp-content/uploads/2022/05/cropped-bd6f3a23cd5294a2370b09bc413f3331-2.png" class="custom-logo" alt="The Rock"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,6 +27,13 @@
         <li class="nav-item active">
           <a class="nav-link text-white" href="#">Home</a>
         </li>
+        <select name="" id="" class="background-color: #0c0c0d;">
+          <option value="">Companies</option>
+          <option value="">RHAD</option>
+          <option value="">Carbonate</option>
+          <option value="">Flavor</option>
+          <option value="">Carddio</option>
+      </select>
         <li class="nav-item">
           <a class="nav-link text-white" href="#">About Us</a>
         </li>
@@ -37,6 +45,7 @@
         </li>
       </ul>
     </div>
+    
   </div>
 </nav>
 <header class="masthead">

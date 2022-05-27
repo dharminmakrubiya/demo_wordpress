@@ -1,8 +1,15 @@
 <footer class="section bg-footer">
+    
         <div class="container">
+                
+
             <div class="row">
-                <div class="col-lg-3">
+            <div class="column col-lg-3">
+            <a class="navbar-brand text-white" href="<?php echo home_url(); ?>"><img width="50" height="50" src="http://mydemo.local/wp-content/uploads/2022/05/cropped-bd6f3a23cd5294a2370b09bc413f3331-2.png" class="custom-logo" alt="The Rock"></a>
+                </div>
+                <div class="col-lg-3">    
                     <div class="">
+
                         <h6 class="footer-heading text-uppercase text-white">Information</h6>
                         <ul class="list-unstyled footer-link mt-4">
                             <li><a href="">Pages</a></li>
@@ -36,7 +43,8 @@
                         </ul>
                     </div>
                 </div>
-
+                
+                
                 <div class="col-lg-4">
                     <div class="">
                         <h6 class="footer-heading text-uppercase text-white">Contact Us</h6>
