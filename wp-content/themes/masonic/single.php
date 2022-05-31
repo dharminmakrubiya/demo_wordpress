@@ -13,10 +13,15 @@ get_header(); ?>
    <div id="container" class="wrapper clear">
       <div class="primary">
 
-         <?php while (have_posts()) : the_post(); ?>
+         	
+            <?php while ( have_posts() ) : the_post(); ?>
+            
+            
+            <p>Website Link :- <?php echo get_post_meta($post->ID, 'website_links', true); ?></p>
 
+            
+            
             <?php get_template_part('content', 'single'); ?>
-
          <?php endwhile; // end of the loop. ?>
       </div>
    </div>

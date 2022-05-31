@@ -18,11 +18,10 @@ if ( have_posts() ) :
 	
 	while ( have_posts() ) :
 		the_post();
-		?>
-
-		<article <?php post_class(); ?>>
+	?>
 		<article>
-		<div class="container pt-3" >
+		<article>
+		<div class="container pt-3 " >
 			<div class="card-deck mb-5">
 				<div class="card">
 				<img class="card-img-top mt-3" ><?php the_post_thumbnail() ?></img>

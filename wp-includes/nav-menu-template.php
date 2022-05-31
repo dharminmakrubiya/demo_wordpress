@@ -54,15 +54,22 @@ require_once ABSPATH . WPINC . '/class-walker-nav-menu.php';
  * @return void|string|false Void if 'echo' argument is true, menu output if 'echo' is false.
  *                           False if there are no items or no menu was found.
  */
+
+
+
+ 
+
+
+
 function wp_nav_menu( $args = array() ) {
 	static $menu_id_slugs = array();
 
 	$defaults = array(
-		'menu'                 => '',
-		'container'            => 'div',
-		'container_class'      => '',
-		'container_id'         => '',
-		'container_aria_label' => '',
+		'menu'                 => 'my menu', //Menu Name
+		'container'            => 'div',	 // CSS
+		'container_class'      => '',		//Default 'menu-{menu slug}-container'.
+		'container_id'         => '',		//The ID that is applied to the container.
+		'container_aria_label' => '',		//The aria-label attribute that is applied to the container when it's a nav element
 		'menu_class'           => 'menu',
 		'menu_id'              => '',
 		'echo'                 => true,
@@ -79,6 +86,14 @@ function wp_nav_menu( $args = array() ) {
 	);
 
 	$args = wp_parse_args( $args, $defaults );
+
+
+
+
+
+	
+
+
 
 	if ( ! in_array( $args['item_spacing'], array( 'preserve', 'discard' ), true ) ) {
 		// Invalid value, fall back to default.

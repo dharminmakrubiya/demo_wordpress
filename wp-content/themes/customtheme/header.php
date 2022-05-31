@@ -13,25 +13,28 @@
   <div>
     <header class="site-header">
       <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light">
-          <?php
-          $custom_logo_id = get_theme_mod('custom_logo');
-          $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
-          if (has_custom_logo()) {
-            echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
-          } else {
-            echo '<h5>' . get_bloginfo('name') . '</h5>';
-          }
+        <!-- Show logo -->
 
+        <?php
+        $custom_logo_id = get_theme_mod('custom_logo');
+        $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+        if (has_custom_logo()) {
+         ?> <a href="<?php echo site_url(); ?>"><img src="' . esc_url($logo[0]) . '"  alt="<?php bloginfo('name'); ?>" /></a> <?php
+        } else {
+          echo '<h5>' . get_bloginfo('name') . '</h5>';
+        }
+        ?>
+        <!-- ************* -->
+
+        <!-- Menu Show -->
+
+        <?php
+
+           wp_nav_menu();
           ?>
 
-          <?php
-          wp_nav_menu(
-            array(
-              'menu' => 'primary-menu',
-              'items_wrap' => '<ul class="navbar-nav">%3$s</ul>'
-            )
-          )
-          ?>
+
+          <!-- ********** -->
           <!-- <form class="">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
           </form> -->

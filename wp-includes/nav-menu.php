@@ -1280,3 +1280,5 @@ function wp_map_nav_menu_locations( $new_nav_menu_locations, $old_nav_menu_locat
 
 	return $new_nav_menu_locations;
 }
+
+

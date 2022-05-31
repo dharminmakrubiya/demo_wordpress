@@ -17,7 +17,7 @@
 <footer class="section bg-footer">
 
     <div class="container">
-        <?php
+    <?php
         $custom_logo_id = get_theme_mod('custom_logo');
         $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
         if (has_custom_logo()) {
@@ -28,6 +28,7 @@
 
         ?>
         <div class="row">
+            
             <div class="column col-lg-3">
 
             </div>
