@@ -233,11 +233,12 @@ get_header();
                         if ($the_query->have_posts()) :
                             while ($the_query->have_posts()) : $the_query->the_post();
                                 // $rows = get_fields('slider');
-                                $rows = get_field("slider"); ?>
+                                $rows = get_field("dataslider"); ?>
+                                <?php $images = get_field("image") ?>
                                 <div class="col-md-6 rhad-creative__bg-img px-sm-0 px-down-xs-0">
-                                    <div class="w-100 jsHero" id="passion-logic-img"> <img data-srcset="https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1-300x257.png 300w, https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1-1024x878.png 1024w, https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1-20x17.png 20w, https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1-100x86.png 100w, https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1.png 1400w, https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1-300x257@2x.png 600w" width="479" height="122" data-sizes="auto" alt="old-man-img-01" src="https://rhad.agency/wp-content/uploads/2021/11/old-man-img-01-1.png" class="rhad-creative__img lazyload"> </div>
-                                    <div class="w-100 jsHero" id="growth-img" style="display: none"> <img data-srcset="https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-300x257.png 300w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-1024x878.png 1024w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-20x17.png 20w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-100x86.png 100w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1.png 1400w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-300x257@2x.png 600w" width="479" height="122" data-sizes="auto" alt="mobile-image" src="https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1.png" class="rhad-creative__img lazyload"> </div>
-                                    <div class="w-100 jsHero" id="target-audience-img" style="display: none"> <img data-srcset="https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-300x257.png 300w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-1024x878.png 1024w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-20x17.png 20w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-100x86.png 100w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1.png 1400w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-300x257@2x.png 600w" width="479" height="122" data-sizes="auto" alt="meet_img" src="https://rhad.agency/wp-content/uploads/2021/11/meet_img-1.png" class="rhad-creative__img lazyload"> </div>
+                                    <div class="w-100 jsHero" id="passion-logic-img"> <img data-srcset="" width="479" height="122" data-sizes="auto" src="<?php echo esc_url($images['url']); ?>" alt="<?php echo esc_attr($images['alt']); ?>" class="rhad-creative__img lazyload"> </div>
+                                    <!-- <div class="w-100 jsHero" id="growth-img" style="display: none"> <img data-srcset="https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-300x257.png 300w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-1024x878.png 1024w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-20x17.png 20w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-100x86.png 100w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1.png 1400w, https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1-300x257@2x.png 600w" width="479" height="122" data-sizes="auto" alt="mobile-image" src="https://rhad.agency/wp-content/uploads/2021/11/mobile-image-1.png" class="rhad-creative__img lazyload"> </div>
+                                    <div class="w-100 jsHero" id="target-audience-img" style="display: none"> <img data-srcset="https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-300x257.png 300w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-1024x878.png 1024w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-20x17.png 20w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-100x86.png 100w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1.png 1400w, https://rhad.agency/wp-content/uploads/2021/11/meet_img-1-300x257@2x.png 600w" width="479" height="122" data-sizes="auto" alt="meet_img" src="https://rhad.agency/wp-content/uploads/2021/11/meet_img-1.png" class="rhad-creative__img lazyload"> </div> -->
                                 </div>
                                 <div class="col-md-6 bg-sky-pink rhad-creative__col-wrapper">
                                     <div class="rhad-creative__contents-wrapper max-500">
@@ -247,11 +248,12 @@ get_header();
                                         foreach ($rows as $row) {
                                             ?>
                                             <div class="w-100 jsHero" id="passion-logic">
-                                                <h3 class="rhad-creative__title" data-aos="zoom-in"><?php echo $row['title']; ?></h3>
-                                                <p class="rhad-creative__text py-44"><?php echo $row['discriptions']; ?></p> <a href="" class="rhad-creative__link"> <img data-srcset="" data-sizes="auto" alt="" src="" class="rhad-creative__link-img" /> </a>
+                                                <h3 class="rhad-creative__title" data-aos="zoom-in"><?php echo $row['data_title']; ?></h3>
+                                                <p class="rhad-creative__text py-44"><?php echo $row['data_descriptions']; ?></p> <a href="" class="rhad-creative__link"> <img data-srcset="" data-sizes="auto" alt="" src="" class="rhad-creative__link-img" /> </a>
                                             </div>
-                                        <?php } ?>
-
+                                        
+                                        
+                                    
                                         
                                     <!-- <div class="w-100 jsHero" id="growth" style="display: none">
                                     <h3 class="rhad-creative__title" data-aos="zoom-in">Bespoke Solutions That Accelerate Growth</h3>
@@ -264,11 +266,7 @@ get_header();
                             </div>
                         </div>
                     </div>
-                    <?php
-                endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
+                    
         </div>
 
 
@@ -282,8 +280,10 @@ get_header();
                     <p class="our-passion__main-description text-center max-700 bg-dark">At the heart of what we do is our passion to help clients achieve and grow. We believe that our logical thinking and passionate attitude are the key reasons why we have won the unyielding trust of our clients.</p><br>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 d-flex our-passion__col-wrapper"> <a href="https://rhad.agency/portfolio/engaging-sephoras-employees-through-gamification/" class="our-passion__link flex-fill"> <img data-sizes="auto" src="https://rhad.agency/wp-content/uploads/2021/11/sephora.jpg" data-srcset="https://rhad.agency/wp-content/uploads/2021/11/sephora-300x154.jpg 300w, https://rhad.agency/wp-content/uploads/2021/11/sephora-1024x524.jpg 1024w, https://rhad.agency/wp-content/uploads/2021/11/sephora-1536x787.jpg 1536w, https://rhad.agency/wp-content/uploads/2021/11/sephora-20x10.jpg 20w, https://rhad.agency/wp-content/uploads/2021/11/sephora-100x51.jpg 100w, https://rhad.agency/wp-content/uploads/2021/11/sephora.jpg 1648w, https://rhad.agency/wp-content/uploads/2021/11/sephora-300x154@2x.jpg 600w" class="our-passion__img lazyload" />
-                        <h4 class="our-passion__img-title">Engaging Sephora’s Employees through Gamification</h4>
+
+                    <div class="col-sm-8 d-flex our-passion__col-wrapper"> <a href="" class="our-passion__link flex-fill"> 
+                        <img  src="<?php echo esc_url($image['url']); ?>" class="our-passion__img lazyload" alt="<?php echo esc_attr($image['alt']); ?>">
+                        <h4 class="our-passion__img-title"><?php echo $row['data_title']; ?></h4>
                     </a> </div>
                     <div class="col-sm-4 d-flex our-passion__col-wrapper"> <a href="https://rhad.agency/portfolio/strengthening-sephoras-employe-alignment/" class="our-passion__link flex-fill"> <img data-sizes="auto" src="https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature.jpg" data-srcset="https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature-279x300.jpg 279w, https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature-20x22.jpg 20w, https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature-93x100.jpg 93w, https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature.jpg 784w, https://rhad.agency/wp-content/uploads/2021/11/sephora-alignment-feature-279x300@2x.jpg 558w" class="our-passion__img lazyload" />
                         <h4 class="our-passion__img-title">Strengthening Sephora’s Employee Alignment</h4>
@@ -371,11 +371,12 @@ get_header();
                         <div class="swiper-slide client-review__swiper-slide">
                             <div class="row">
                                 <div class="col-md-7 p-0">
-                                    <div class="client-review__img"> <img data-src="https://rhad.agency/wp-content/uploads/2022/05/Alvin-1-20x11.jpg" alt="Alvin" width="810" height="55" data-sizes="auto" src="https://rhad.agency/wp-content/uploads/2022/05/Alvin-1.jpg" data-srcset="https://rhad.agency/wp-content/uploads/2022/05/Alvin-1-300x167.jpg 300w, https://rhad.agency/wp-content/uploads/2022/05/Alvin-1-20x11.jpg 20w, https://rhad.agency/wp-content/uploads/2022/05/Alvin-1-100x56.jpg 100w, https://rhad.agency/wp-content/uploads/2022/05/Alvin-1.jpg 968w, https://rhad.agency/wp-content/uploads/2022/05/Alvin-1-300x167@2x.jpg 600w" class="lazyload" /> </div>
+                                    
+                                    <div class="client-review__img"> <img src="<?php echo esc_url($images['url']); ?>" alt="<?php echo esc_attr($images['alt']); ?>" /> </div>
                                 </div>
                                 <div class="col-md-5 client-review__col">
                                     <div class="client-review__contents-wrap mx-md-7">
-                                        <h4 class="client-review__discription text-white mb-0">“We are happy with RHAD’s servicing and campaign results, and look forward to using more of their services in the future!”</h4>
+                                        <h4 class="client-review__discription text-white mb-0"><?php echo $row['data_descriptions']; ?></h4>
                                         <p class="client-review__naming-label text-white mt-6 mb-0"> Alvin Chia, </p>
                                         <p class="client-review__designation text-white mb-0">Regional Brand & Communications Manager UnionPay International Southeast Asia</p>
                                     </div>
@@ -389,7 +390,7 @@ get_header();
                                 </div>
                                 <div class="col-md-5 client-review__col">
                                     <div class="client-review__contents-wrap mx-md-7">
-                                        <h4 class="client-review__discription text-white mb-0">We have developed a great partnership with RHAD for the past 1 year and we wholeheartedly recommend the team for their talents, dedication and passion towards marketing and technology projects. </h4>
+                                        <h4 class="client-review__discription text-white mb-0"></h4>
                                         <p class="client-review__naming-label text-white mt-6 mb-0"> Markus Xander </p>
                                         <p class="client-review__designation text-white mb-0">Beato </p>
                                     </div>
@@ -399,6 +400,12 @@ get_header();
                     </div>
                 </div>
             </div>
+            <?php } ?>
+                    <?php
+                endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
         </section>
         <section class="gets-in-touch py-xs-15 py-xss-16 py-sm-17 py-mdlg-53 bg-bg-black">
             <div class="container">
