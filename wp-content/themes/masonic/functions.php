@@ -760,3 +760,47 @@ function create_companies()
 // );
 
 // var_dump( wp_list_categories($args) );
+
+
+
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++ Create a custom portfolio Module +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function create_posttype_portfolio() 
+{
+	register_post_type( 'Portfolio',
+
+	array(
+	  'labels' => array(
+	   'name' => __( 'Portfolio' ),
+	   'singular_name' => __( 'Portfolio' )
+	   
+	  ),
+	  'supports' => array(
+		'title', // post title
+		'editor', // post content
+		'author', // post author
+		'thumbnail', // featured images
+		'excerpt', // post excerpt
+		'custom-fields', // custom fields
+		'comments', // post comments
+		'revisions', // post revisions
+		'post-formats', // post formats
+	),
+	  'public' => true,
+	  'has_archive' => false,
+	  'rewrite' => array('slug' => 'Portfolio'),
+	 )
+	);
+	
+	}
+
+	add_action( 'init', 'create_posttype_portfolio' );
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++ Show Portfolio Post  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+define( 'WP_MEMORY_LIMIT', '128M' );
+
