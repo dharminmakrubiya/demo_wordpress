@@ -802,5 +802,4 @@ function create_posttype_portfolio()
 // ++++++++++++++++++++++++++++++++++++++++++++++ Show Portfolio Post  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-define( 'WP_MEMORY_LIMIT', '128M' );
 

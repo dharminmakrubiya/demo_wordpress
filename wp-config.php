@@ -80,6 +80,7 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
+define('FS_METHOD', 'direct');
 
 /* Add any custom values between this line and the "stop editing" line. */
 
@@ -95,3 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
 define( 'UPLOADS', 'wp-content/uploads' );
+
+define( 'FTP_USER', 'dharmin' );
+define( 'FTP_PASS', 'dharmin' );
+define( 'FTP_HOST', 'dharmin.example.com:21' );

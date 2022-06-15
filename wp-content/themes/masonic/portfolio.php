@@ -5,8 +5,6 @@
 
 
 
-
-
 <?php
 
 $postid = get_post_field('post_name', get_post());
@@ -27,10 +25,10 @@ if (isset($_GET['post_tag']) ) {
             'field' => 'slug',
             'terms' => $_GET['post_tag'],
         )
-
     );
 }
 $the_query = new WP_Query($args);
+
 ?>
 
 
@@ -44,11 +42,12 @@ $cat = get_categories(array('taxonomy' => 'categories'));
 
 
 
+
 foreach ($cat as $catvalue) {
 
     //echo $catvalue->name."<br>";                                           
     // echo '<a href=\"$postid?post_tag=$catvalue->slug\">$catvalue->slug </a>';
-    echo "<div class='container'><a href=\"$postid?post_tag=$catvalue->name\">$catvalue->name </a></div>";
+    echo "<div class='container'><a href=\"$postid?post_tag=$catvalue->slug\">$catvalue->name </a></div>";
     // echo "<div class="container"><a href="' . get_category_link($catvalue->term_id) . '">' . $catvalue->slug . '</a></div>";
 
 
@@ -59,7 +58,7 @@ foreach ($cat as $catvalue) {
 <?php if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <div class="card-deck">
-            <div class="container">
+            <div class="container pt-5">
                 <div class="card-group">
                     <div class="card">
                         <div class="card-img-top"><?php the_post_thumbnail(); ?></div>
@@ -75,5 +74,5 @@ foreach ($cat as $catvalue) {
     <?php endwhile; ?>
     <?php wp_reset_postdata(); ?>
 <?php else :  ?>
-    <p><?php _e('Sorry, no posts matched your portfolio.'); ?></p>
+    <p class="container p-5 mt-5"><?php echo('Sorry, no posts matched your portfolio.'); ?></p>
 <?php endif; ?>
