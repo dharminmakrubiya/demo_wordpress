@@ -68,7 +68,6 @@ while ( $query->have_posts() ) {
     foreach ( $categories as $key=>$category ) {
         $b = '<a href="'.get_category_link($category).'">'.$category->name.'</a>';    
     }
-    
     // echo "<pre>";
     // print_r($q);
     $q[$b][] = $a; 
@@ -78,11 +77,9 @@ while ( $query->have_posts() ) {
 wp_reset_postdata();
 foreach ($q as $key=>$values) {
         // echo $key;
-        // echo '<ul>';
         //     foreach ($values as $value){
         //         echo '<li>' . $value . '</li>';
         //     }
-        // echo '</ul>';
 }  
 echo "<pre>";
 print_r($q);
