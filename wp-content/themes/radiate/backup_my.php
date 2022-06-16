@@ -65,17 +65,22 @@ $q = array();
 while ( $query->have_posts() ) { 
     $query->the_post(); 
     $d='<a href="'.get_permalink().'">'.get_the_id().'</a>';
-    $a='<a href="'.get_permalink().'">'.get_the_title().'</a>';
-    $c='<a href="'.get_permalink().'">'.get_post_field( 'post_name', get_post() ).'</a>';
+    $a='<a href="'.get_permalink().'">'.get_the_id().'</a>';
+    $c=array();
+
     $categories = get_the_category();
     foreach ( $categories as $key=>$category ) {
         $b = '<a href="'.get_category_link($category).'">'.$category->name.'</a>';    
     }
     // echo "<pre>";
     // print_r($q);
-    $q[$b]['id'] = $d; 
-    $q[$b]['slug'] = $c; 
-    $q[$b][] = $a; 
+    $c['id']=get_the_id();
+    $c['title']=get_the_title();
+    $c['slug']=get_post_field( 'post_name', get_post() );
+    $c['date']=get_the_date( 'Y-m-d' );
+    // $q[$b]['id'] = $d; 
+    // $q[$b]['slug'] = $c; 
+    $q[$b][$a] = $c; 
 }
 // echo "<pre>";
 // print_r($q);
@@ -91,8 +96,12 @@ print_r($q);
 ?>
 
 <?php
+
 get_footer();
+
 ?>
+
+
 
 
 
