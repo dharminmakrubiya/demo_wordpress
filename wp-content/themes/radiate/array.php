@@ -19,7 +19,7 @@
             esc_html($category->name),
             
         );
-        // $a =array($category->name);
+        $a =array($category->name);
         array_push($arr,$category->name);
     }
     echo "<pre>";
@@ -30,53 +30,73 @@
 
 
 	<?php
-
+// $post = array();
 foreach ($categories as $category) 
 {
+    
     $args = array(
         'category_name' => $category->name,
         'post_type' => 'post',
         'pst_status' => 'publish',
+        
     );
     $arr1 = array();
     
     $arr_posts = new WP_Query($args);
 
-    // echo "category=".$category->name."<br>";
+    echo "<pre>";
+    
+    // print_r($arr_posts->posts);
+   
+    if ( have_posts() ) : while ( have_posts() ) : the_post();
+the_content();
+endwhile;
+
+ endif ;
+    //  echo "category=".$category->name."<br>";
     if ($arr_posts->have_posts()) :
 
-        while ($arr_posts->have_posts()) :
-            $arr_posts->the_post();
+        // die('222222');
+//    foreach ($arr_posts->posts as $key => $post) {    
+// //    die('66666');
+//        $post[$category->name]= 'helooooo';
 
+//     //    print_r($post);
+//     //    die;
+//    }
+            $arr_posts->the_post();
+                
+            
             // echo "post". the_title()."<br>";
             // array_push($arr1,the_title());
-            array_push($arr1, array(get_the_title()));
+             array_push($arr1, array(get_the_title()));
+            print_r($arr1);
 
-
-        endwhile;
+     
     endif;
 
     
 }
-    print_r($arr1);
+    print_r($post);
+    die;
     // print_r($arr);
     $args = array(
-        'taxonomy' => 'category',
+        //'taxonomy' => 'category',
         'post_type' => 'post',
         'pst_status' => 'publish',
-        'posts_per_page' => 5,
-        'tax_query' => array(
-            array(
-                'category_name' => 'uncategorized',
-                'field'    => 'slug',
-                // 'terms'    => array( 'TERM_SLUG' ),
-                'operator' => 'IN'
-            ),
-        ),
+        //'posts_per_page' => 5,
+        // 'tax_query' => array(
+        //     array(
+        //         'category_name' => 'uncategorized',
+        //         'field'    => 'slug',
+        //         // 'terms'    => array( 'TERM_SLUG' ),
+        //         'operator' => 'IN'
+        //     ),
+        // ),
     );
 
     $arr_posts = new WP_Query($args);
-
+    var_dump($arr_posts ['posts']);
 
     if ($arr_posts->have_posts()) :
 
@@ -103,7 +123,6 @@ foreach ($categories as $category)
 
     ?>
 
-	
 
 
 
