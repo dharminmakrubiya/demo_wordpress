@@ -57,7 +57,7 @@ endwhile;
     if ($arr_posts->have_posts()) :
 
         // die('222222');
-//    foreach ($arr_posts->posts as $key => $post) {    
+//    foreach ($arr_posts->posts as $key => $post) {
 // //    die('66666');
 //        $post[$category->name]= 'helooooo';
 
