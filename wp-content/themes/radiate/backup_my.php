@@ -100,7 +100,7 @@ foreach ($q as $key=>$values) {
 }  
 
 echo "<pre>";
-// print_r($q);
+print_r($q);
 
 
 //Array Chunk Function splits an array into chunks of new arrays.(cut & piece)
@@ -145,9 +145,10 @@ echo "<pre>";
 
 
 //This array count Function to count of array element in the array
+echo "<pre>";
 print_r(count($q));
-
-?>
+var_dump($q);
+?>  
 
 
 
