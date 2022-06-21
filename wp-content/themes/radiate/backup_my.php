@@ -47,7 +47,6 @@ foreach ($categories as $category) {
 
 // echo "<pre>";
 // print_r($children);
-
 // print_r($children);
 ?>
 
@@ -99,18 +98,24 @@ foreach ($q as $key=>$values) {
         //     }
 }  
 
-echo "<pre>";
-print_r($q);
+// echo "<pre>";
+// print_r($q);
 
 
 //Array Chunk Function splits an array into chunks of new arrays.(cut & piece)
 //print_r(array_chunk($q, 4));
+// $subject =array('Maths','Hindi','Maths','Hindi','Gujarati','Gujarati','Science','Maths','Hindi','Maths','Hindi','Gujarati','Gujarati','Science','Hindi','Hindi','Gujarati','Gujarati','Science','Hindi');
+// echo "<pre>";
+// print_r(array_chunk($subject,4));
+
 
 //Array Count Value Function is Show Array in Values 
-//print_r(array_count_values($c));
-
-//Array Merge function merges one or more arrays into one array.
-//print_r(array_merge($c,$q));
+// print_r(array_count_values($c));
+// echo "<pre>";
+// print_r(array_count_values($c));
+// $subject =array('Maths','Hindi','Maths','Hindi','Gujarati','Gujarati','Science');
+// echo "<pre>";
+// print_r(array_count_values($subject));
 
 
 
@@ -126,37 +131,55 @@ print_r($q);
 
 
 //This Array push function is used to inserts one or more elements to the end of an array.
-//array_push($c, "dharmin_makrubiya");
-//print_r($c);
+// array_push($c, "dharmin_makrubiya");
+// echo "<pre>";
+// print_r($c);
+// $subject1= array('English','Hindi');
+// array_push($subject1,'Gujarati','Maths');
+// print_r($subject1);
 
-//Array Combine function is used to a combine one array value to another [dharmin] => makrubiya
-// $first_name = array("Dharmin","Jay","Mahesh","Keval","Parthraj");
-// $surname = array("Makrubiya","Makrubiya","Shishangiya","Jadeja");
-// $abc = array_combine($first_name, $surname);
-// print_r($abc);
+
 
 //Array Slice Function is return a selected parths to return a resluts.
 //Slice means the array cut and genrate a new 3rd value and show it
-// print_r(array_slice($q, 2));
+// echo "<pre>";
+// print_r(array_slice($q, 4));
+$subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social Science');
+$result = array_slice($subject1,2);
+echo "<pre>";
+print_r($result);
 
 
 //Array uniqe function is remove a duplicate array value in the array.
 // print_r(array_unique($q));
+// $subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social Science','Gujarati');
+// $result = array_unique($subject1);
+// print_r($result);
 
 
-//This array count Function to count of array element in the array
+
+//The array_merge() function is used to merge two or more arrays into a single array.
+$array1 = array("subject1" => "Python", "subject2" => "sql");
+$array2 = array("subject3" => "c/c++", "subject4" => "java");
+$array3 = array("subject5" => "wordpress", "subject6" => "OS");
+$array4 = array("subject7" => "data mining", "subject8" => "C#");
+$final = array_merge($array1, $array2, $array3, $array4);
 echo "<pre>";
-print_r(count($q));
-var_dump($q);
+print_r($final);
+
+
+
+//The array_combine() function is used to combine two arrays and create a new array by using one array for keys and another array for values.
+$array1 = array("subject1" ,"subject2");
+$array2 = array( "c/c++", "java");
+$final = array_combine($array1, $array2);
+echo "<pre>";
+print_r($final);
+
 ?>  
 
-
-
-
 <?php
-
 get_footer();
-
 ?>
 
 
