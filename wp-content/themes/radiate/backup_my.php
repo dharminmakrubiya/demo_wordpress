@@ -121,13 +121,101 @@ foreach ($q as $key=>$values) {
 
 //Array Filter Function is use to filters the values of an array using a callback function.
 //Callback Function is used to one function argument passed to another function 
-// function testing_filter_example($var)
-//   {
-//   return($var & 1);
-//   }
+function testing_filter_example($dharmin)
+  {
+        return $dharmin & 1;
+  }
 
-// $a1=array(1,2,3,4,5,6,7,8,9,10);
-//     print_r(array_filter($a1,"testing_filter_example"));
+$a1 = array(1,2,3,4,5,6,7,8,9,10,11,12,12,14,15);
+
+echo "<pre>";
+
+print_r(array_filter($a1,"testing_filter_example"));
+
+
+
+//The array_sum() function returns the sum of all the values in an array
+$my_sum = array (10,20,30,40,50,60,70);
+echo "<pre>";
+print_r(array_sum($my_sum));
+
+
+// The current() function is used to fetch the value of the current element in an array.
+$my_name = array ("dharmin","Jay","Parthraj");
+
+echo "<pre>";
+print_r(current($my_name));
+
+
+
+
+//The Array End() is used to show a last element in an array
+
+$personal_name = array ("Dharmin","Jay","Keval","Parthraj","Mahesh");
+
+echo "<pre>";
+    
+print_r(end($personal_name));
+
+
+
+
+
+
+
+
+//Array sort()
+//This function sorts an array. Elements will be arranged from lowest to highest when this function has completed.
+
+$name = array("Tirth","Dharmin","Brijesh","Jay","Anuj");
+
+echo "<pre>";
+
+
+
+sort($name);
+
+foreach ($name as $key => $value) {
+    echo "sort Array [".$key."] = ".$value."\n";
+
+}
+
+
+
+
+
+//Array asort()
+//The PHP asort () function is used to sort array units from low to high and maintain the index relationship.
+$names = array("Tirth","Dharmin","Brijesh","Jay","Anuj","Garvin");
+echo "<pre>";
+
+asort($names);
+
+foreach ($names as $key => $value) {
+    echo "asort Array [".$key."] = ".$value."\n";
+}
+
+
+
+
+
+
+//Array ARSort()
+//opposite of asort (high to low) with maintain index relationship
+$names = array("Tirth","Dharmin","Brijesh","Jay","Anuj","Garvin");
+echo "<pre>";
+
+
+arsort($names);
+
+foreach ($names as $key => $value) {
+    echo "arsort Array [".$key."] = ".$value."\n";
+}
+
+
+
+
+
 
 
 //This Array push function is used to inserts one or more elements to the end of an array.
@@ -142,12 +230,14 @@ foreach ($q as $key=>$values) {
 
 //Array Slice Function is return a selected parths to return a resluts.
 //Slice means the array cut and genrate a new 3rd value and show it
-// echo "<pre>";
-// print_r(array_slice($q, 4));
-$subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social Science');
-$result = array_slice($subject1,2);
+$subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social-Science','GK','Eco');
+
+$result = array_slice($subject1,4);
+
 echo "<pre>";
 print_r($result);
+
+
 
 
 //Array uniqe function is remove a duplicate array value in the array.
@@ -175,7 +265,6 @@ $array2 = array( "c/c++", "java");
 $final = array_combine($array1, $array2);
 echo "<pre>";
 print_r($final);
-
 ?>  
 
 <?php
