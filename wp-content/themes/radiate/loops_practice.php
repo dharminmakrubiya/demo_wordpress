@@ -46,7 +46,7 @@ $def = array(
 	10
 );
 echo "<pre>";
-print_r($def);
+// print_r($def);
 
 foreach($def as $value){
 	echo($value."<br>");
