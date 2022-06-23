@@ -6,6 +6,8 @@ get_header();
 
 <!-- for loop : For loop implemented over variables and at the end of the given condition-->
 <?php
+echo "for loop ex";
+
 $abc = array(
 	1,
 	2,
@@ -31,6 +33,8 @@ for($i = 0; $i <= 10; $i++)
 <!-- Foreach loop : Foreach loop implemented over Numerical and associative arrays at the end of the array counting in this loop-->
 
 <?php
+echo "for-each ex";
+
 $def = array(
 	1,
 	2,
