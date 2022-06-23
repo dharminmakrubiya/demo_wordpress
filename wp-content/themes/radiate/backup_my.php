@@ -1,3 +1,4 @@
+
 <?php
 /* Template Name: concept Template */
 get_header();
@@ -122,9 +123,9 @@ foreach ($q as $key=>$values) {
 //Array Filter Function is use to filters the values of an array using a callback function.
 //Callback Function is used to one function argument passed to another function 
 function testing_filter_example($dharmin)
-  {
-        return $dharmin & 1;
-  }
+{
+    return $dharmin & 1;
+}
 
 $a1 = array(1,2,3,4,5,6,7,8,9,10,11,12,12,14,15);
 
@@ -154,7 +155,7 @@ print_r(current($my_name));
 $personal_name = array ("Dharmin","Jay","Keval","Parthraj","Mahesh");
 
 echo "<pre>";
-    
+
 print_r(end($personal_name));
 
 
@@ -214,6 +215,53 @@ foreach ($names as $key => $value) {
 
 
 
+//Array KSort
+$myksortarray = array(
+    "z" => 1,
+    "y" => 2,
+    "x" => 3,
+    "n" => 4,
+    "o" => 5,
+    "b" => 6,
+    "a" => 7,
+    "m" => 8,
+    "q" => 9,
+    "i" => 10,
+    "e" => 11,
+    "d" => 12,                           
+);
+echo "<pre>";
+ksort($myksortarray);
+foreach ($myksortarray as $key => $val) {
+    // echo "[".$key."] = ".$val."\n";
+    echo "[".$key."] =  ".$val."\n";
+}
+
+
+
+
+
+//Array KRSort 
+//reverse order according to index values and count.
+$mykrsortarray = array(
+    "0" => "Dharmin",
+    "1" => "Parthraj",
+    "2" => "Shakti",
+    "3" => "Shakti Rayjada",
+    "4" => "Jay",
+    "5" => "Tirth",
+    "6" => "Karan",
+    "7" => "Raghu",
+    "8" => "Ashok",
+);
+
+echo "<pre>";
+krsort($mykrsortarray);
+// print_r($mykrsortarray);
+foreach ($mykrsortarray as $key => $value) {
+    echo "[".$key."] = ".$value."\n";
+}
+
 
 
 
@@ -230,12 +278,12 @@ foreach ($names as $key => $value) {
 
 //Array Slice Function is return a selected parths to return a resluts.
 //Slice means the array cut and genrate a new 3rd value and show it
-$subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social-Science','GK','Eco');
+// $subject1 = array('Maths','Hindi','Gujarati','Science','Drawing','Sanskrit','Social-Science','GK','Eco');
 
-$result = array_slice($subject1,4);
+// $result = array_slice($subject1,4);
 
-echo "<pre>";
-print_r($result);
+// echo "<pre>";
+// print_r($result);
 
 
 
