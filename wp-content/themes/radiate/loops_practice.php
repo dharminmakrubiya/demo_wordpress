@@ -6,7 +6,7 @@ get_header();
 
 <!-- for loop : For loop implemented over variables and at the end of the given condition-->
 <?php
-echo "for loop ex";
+echo "for loop example";
 
 $abc = array(
 	1,
@@ -31,10 +31,8 @@ for($i = 0; $i <= 10; $i++)
 
 
 <!-- Foreach loop : Foreach loop implemented over Numerical and associative arrays at the end of the array counting in this loop-->
-
 <?php
-echo "for-each ex";
-
+echo "for-each example";
 $def = array(
 	1,
 	2,
@@ -50,10 +48,47 @@ $def = array(
 echo "<pre>";
 print_r($def);
 
-foreach($def as $val){
-	echo($val."<br>");
+foreach($def as $value){
+	echo($value."<br>");
 }
 ?>
+
+
+
+<!-- While Loop : is entry controlled loop Condition add start of the loop condition check first then statement executes-->
+<?php
+echo "While loop example";
+
+$xyz = 1;
+
+while ($xyz <= 10) {
+	echo "<br>$xyz";
+	$xyz++;
+}
+?>
+
+
+
+<!-- Do While Loop : Exit Controlled Loop body of the loop at least once statements executes first and then condition checks-->
+
+<?php
+
+echo "Do While Loop Example";
+
+$pqr = 1;  
+    do {  
+        echo "</br>$pqr";  
+        $pqr++;  
+    } while ($pqr <= 10);  
+
+
+?>
+
+
+
+
+
+
 
 
 
