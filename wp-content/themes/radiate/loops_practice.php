@@ -4,6 +4,139 @@ get_header();
 ?>
 
 
+
+
+
+
+
+
+<!-- Multilevel inheritence -->
+<?php
+
+class a {
+	public $the_name;
+	public $the_age;
+
+	public function __construct($the_name,$the_age);
+	{
+		$this->name = $the_name;
+		$this->age = $the_age;
+	}
+	public function second()
+	{
+		echo " Name is {$this->name} and the Age is {$this->age}.";
+	}
+}
+
+class b extends a 
+{
+	public function msg()
+	{
+		echo "Hello How Are You!";
+	}
+}
+
+$s = new b("Dharmin",21);
+$s -> msg();
+$s -> second();
+
+?>
+
+
+
+
+<!-- Static Method -->
+<?php
+
+class s_m {
+  public static function my_example() {
+    echo "Hello This is Static Method Example";
+  }
+  public function __construct() {
+    self::my_example();
+  }
+}
+
+new s_m();
+
+?>
+
+
+
+
+
+
+
+
+
+<!-- Constructor  -->
+<?php
+class dharmin
+{	
+	function __construct()
+	{
+		echo "My Constructor is Run.";
+	}
+}
+$abcd = new dharmin();
+?>
+
+
+
+
+
+<!-- Destructor -->
+<?php
+class UserNames {
+  public $name;
+  public $age;
+
+  function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+  }
+  function __destruct() {
+    echo "The Username is {$this->name} and the Age is {$this->age}.";
+  }
+}
+
+$abcd = new UserNames("Dharmin", 21); 
+echo "<pre>";
+print_r($abcd);
+print_r($this);
+
+?>
+
+
+
+
+
+<!-- Class Example $this keyword refers to the current object, and is only available inside methods-->
+<?php
+class Company 
+{
+  public $name;
+  function set_name_company($name) 
+  {
+    $this->name = $name;
+  }
+}
+$abc = new Company();
+$abc->set_name_company("MirrorTech");
+print_r($abc);
+echo $abc->name;
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!-- for loop : For loop implemented over variables and at the end of the given condition-->
 <?php
 echo "for loop example";
@@ -83,17 +216,6 @@ $pqr = 1;
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php
