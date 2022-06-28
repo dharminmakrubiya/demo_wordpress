@@ -293,7 +293,7 @@
 													<a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=digital">
 														<?php
 															foreach ($cat as $catvalue) {
-																echo "<br><a href=\"$postid?post_tag=$catvalue->slug\">$catvalue->name</a></br>";
+																echo "<li><a href=\"$postid?post_tag=$catvalue->slug\">$catvalue->name</a></li>";
 															}
 														?>
 													</a> 
@@ -313,7 +313,7 @@
 										'post_type'=> 'post',
 										'orderby'    => 'ID',
 										'post_status' => 'publish',
-										'posts_per_page' => -1 // this will retrive all the post that is published 
+										'posts_per_page' => '3' 
 										);
 										$result = new WP_Query( $args );
 										if ( $result-> have_posts() ) : ?>
@@ -338,8 +338,7 @@
 										</div>
 									</div>
 								</div>
-								<?php endwhile; ?>
-								<?php endif; wp_reset_postdata(); ?>
+								
 								<!-- <div class="list">
 									<div class="list__wrapper mb-6">
 										<div class="row list__wrapper-row">
@@ -391,15 +390,23 @@
 										</div>
 									</div>
 								</div> -->
+								<?php endwhile; ?>
+								<?php endif; wp_reset_postdata(); ?>
 								<div class="pagination-blog">
-									<div class="pagination-blog__lists"> <span aria-current="page" class="page-numbers current">1</span> <a class="page-numbers" href="https://rhad.agency/insights/page/2/">2</a> <a class="next page-numbers" href="https://rhad.agency/insights/page/2/">Next</a> </div>
+									<div class="pagination-blog__lists"> 
+										<span aria-current="page" class="page-numbers current">1</span> 
+										<a class="page-numbers" href="">2</a> 
+										<a class="next page-numbers" href="">Next</a> 
+									</div>
 								</div>
+							
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
 		</main>
+		
 		<footer class="footer-info footer g-gutter">
 			<div class="container">
 				<div class="row mx-sm-0 mx-intermediate-52">
