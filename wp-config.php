@@ -100,3 +100,14 @@ define( 'UPLOADS', 'wp-content/uploads' );
 define( 'FTP_USER', 'dharmin' );
 define( 'FTP_PASS', 'dharmin' );
 define( 'FTP_HOST', 'dharmin.example.com:21' );
+
+
+
+
+
+
+
+
+
+
+

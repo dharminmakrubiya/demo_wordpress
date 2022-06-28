@@ -212,6 +212,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Calling in the admin area for the Welcome Page as well as for the new theme notice too.
  */
+
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin/class-radiate-admin.php';
 	require get_template_directory() . '/inc/admin/class-radiate-dashboard.php';
@@ -235,7 +236,6 @@ function themename_custom_logo_setup()
 
     add_theme_support('custom-logo', $defaults);
 }
-
 add_action('after_setup_theme', 'themename_custom_logo_setup');
 
 

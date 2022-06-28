@@ -4,9 +4,96 @@ get_header();
 ?>
 
 
+<!-- Method Overriding Method overriding allows a child class to provide a specific implementation of a method already provided by its parent class.-->
+<?php 
+
+class A {
+	public function dharmin(){
+		return "Hello How Are You!";
+	}
+}
+class B extends A {
+	public function dharmin(){
+		return "Hiiiiii";
+	}
+}
+
+
+echo "<pre>";
+$a = new A();
+echo $a->dharmin();
+
+
+$b = new B();
+echo $b->dharmin();
+echo "<pre>";
+
+
+?>
+
+
+
+
+<!-- Method Overloading Overloading means declaring a function multiple times with a different set of parameters -->
+<?php 
+
+class AB {
+	private function dharmin_abc($a){
+		return $a;
+	}
+}
+class CD extends AB {
+	private function dharmin_abc($a,$b){
+		return $a + $b;
+	}
+}
+
+echo dharmin_abc(10);
+echo dharmin_abc(10,30);
+
+?>
+
+
+
+<!-- Static Method -->
+
+<?php
+
+class s_m {
+  public static function my_example() {
+    echo "Hello This is Static Method Example";
+  }
+  public function __construct() {
+    self::my_example();
+  }
+}
+
+new s_m();
+echo "<pre>";
+?>
+
+
+
+<!-- iterable -->
+
+<?php
+
+function getIterable():iterable {
+  return ["a", "b", "c"];
+}
+
+$myIterable = getIterable();
+foreach($myIterable as $item) {
+  echo $item;
+}
+echo "<pre>";
+
+?>
+
 
 
 <!-- Inheritence Example -->
+
 <!-- Single Inheritence -->
 <?php
 
@@ -78,41 +165,57 @@ $obj->c();
 
 
 
+
+
+
 <!-- Hirarchical Inheritence -->
 <?php
-        class A
+   	class A
 	{
-		function methodA()
+		function ab()
 		{
-			echo 'Class A methodA';
+			echo 'Class A ab';
 		}
 	}
 
 	class B extends A
 	{
-		function methodB()
+		function cd()
 		{
-			echo 'Class B methodB';
+			echo 'Class B cd';
 		}
 	}
 
 	class C extends A
 	{
-		function methodC()
+		function ef()
 		{
-			echo 'Class C methodC';
+			echo 'Class C ef';
+		}
+	}
+
+	class D extends A 
+	{
+		function gh()
+		{
+			echo "Class D gh";
 		}
 	}
 
 	$obj = new C();
-	$obj->methodA();
+	$obj->ab();
 	echo '<br>';
-        $obj->methodC();
-	/*now initialize one more Object for class B*/
+    $obj->ef();
+	// initialize one or more Object for class B
 	echo '<br>';
 	$newObj = new B();
-	$newObj->methodA();
+	$newObj->ab();
+	echo "<br>";
+	// $new_obj_camp = new D();
+	// $new_obj_camp->gh();
 ?>
+
+
 
 
 <!-- Constructor  -->
@@ -158,22 +261,5 @@ print_r($this);
 
 
 
-
-
-<!-- Static Method -->
-<?php
-
-class s_m {
-  public static function my_example() {
-    echo "Hello This is Static Method Example";
-  }
-  public function __construct() {
-    self::my_example();
-  }
-}
-
-new s_m();
-
-?>
 
 <?php get_footer(); ?>
