@@ -202,6 +202,7 @@
 				</div>
 			</header>
 			<?php
+			 
 			$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
 			// echo "<pre>";
@@ -238,7 +239,7 @@
 
 			$result = new WP_Query($args);
 			$count = $result->found_posts;?>
-			
+
 			<div class="content page__content">
 
 				<section class="blogs">
