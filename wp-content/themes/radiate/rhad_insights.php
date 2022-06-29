@@ -219,127 +219,159 @@
 									<div class="breadcrumbs__col-wrapper w-100">
 										<div class="breadcrumbs__result">Showing 4 of 5 results</div>
 										<div class="breadcrumbs__category">
-											<div class="dropdown"> 
-												<button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categories &nbsp; &nbsp; 
+											<div class="dropdown">
+												<button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categories &nbsp; &nbsp;
 												</button>
-												<?php 
-													$cat = get_categories(array('taxonomy' => 'category'));
+												<?php
+												$cat = get_categories(array('taxonomy' => 'category'));
 												// echo "<pre>";
 												// print_r($cat);
 												?>
-												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton"> 
-													<?php 
-														foreach ($cat as $catvalue) {
-															echo "<li><a  href=\"$postid?post_tag=$catvalue->slug\">$catvalue->name</a></li>";
-														}
+												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
+													<?php
+													foreach ($cat as $catvalue) {
+														echo "<li><a  href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
+													}
 													?>
 													<!--<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=digital">Digital</a> 
 													 <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=marketing">Marketing</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=personal">Personal</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=stories">Stories</a> </div> -->
+												</div>
 											</div>
-										</div>
-										<div class="breadcrumbs__tag">
-											
-											<div class="dropdown"> <button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tags &nbsp; &nbsp; </button>
-												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton"> 
-												<?php 
-													$tags = get_tags(array(
-														'hide_empty' => false
-													));
-													// echo "<pre>";
-													// print_r($tags);
-												?>
-												<?php
-													foreach ($tags as $tag) {
-														echo '<li>' . $tag->name . '</li>';
-													  }
-												?>
-													<!-- <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr">HR</a> 
+											<div class="breadcrumbs__tag">
+
+												<div class="dropdown"> <button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tags &nbsp; &nbsp; </button>
+													<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
+														<?php
+														$tags = get_tags(array(
+															'hide_empty' => false
+														));
+														
+														// echo "<pre>";
+														// print_r($tags);
+														?>
+														
+														<?php
+														
+														foreach ($tags as $tag) 
+														{
+															echo "<li><a  href=\"$postid?post_tag=$tag->slug\">$tag->name</a></li>";
+															// echo '<li>' . $tag->name . '</li>';
+														}
+														
+														?>
+														<!-- <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr">HR</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-ethics">HR ethics</a>
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-innovation">HR innovation</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-motivation">HR Motivation</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-policy">HR Policy</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-trends">HR Trends</a> </div> -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="container">
-						<div class="row mb-md-7 mb-xl-6 mt-md-7 mt-xl-6">
-							<div class="col-md-4">
-								<div class="categories__notify">
-									<div class="categories">
-										<div class="categories__wrapper">
-											<div class="wrapper">
-												<form method="GET" action="/insights">
-													<div class="searchBar"> <input id="searchQueryInput" type="text" required name="search" placeholder="Search" value="" /> <button id="searchQuerySubmit" type="submit"> <img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/search-icon_c04bcdc7.svg" viewBox="0 0 24 24"> </button> </div>
-												</form>
-											</div>
-										</div>
-										
-										<div class="categories__list-wrapper">
-											<h3 class="categories__title text-coal">Categories</h3>
-											<?php 
-												$cat = get_categories(array('taxonomy' => 'category'));
-												// echo "<pre>";
-												// print_r($cat);
-											?>
-											<ul class="categories__menu">
-												<li class="categories__menu-item"> 
-													<a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=digital">
-														<?php
-															foreach ($cat as $catvalue) {
-																echo "<li><a href=\"$postid?post_tag=$catvalue->slug\">$catvalue->name</a></li>";
-															}
-														?>
-													</a> 
-												</li>
-												<!-- <li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=marketing">Marketing (1)</a> </li>
-												<li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=personal">Personal (3)</a> </li>
-												<li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=stories">Stories (3)</a> </li> -->
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8">
-								<div class="list">
-									<?php 
-									$args = array(
-										'post_type'=> 'post',
-										'orderby'    => 'ID',
-										'post_status' => 'publish',
-										'posts_per_page' => '3' 
-										);
-										$result = new WP_Query( $args );
-										if ( $result-> have_posts() ) : ?>
-										<?php while ( $result->have_posts() ) : $result->the_post(); ?>
-										
-										
-									<div class="list__wrapper mb-6">	
-										<div class="row list__wrapper-row">
-											<div class="col-md-4 col-sm-6 pl-0 pr-0"> 
-												<img data-sizes="auto" class="list__image lazyload" /> <?php the_post_thumbnail(); ?>
-											</div>
-											<div class="col-md-8 col-sm-6 d-flex align-items-center bg-white-gray">
-												<div class="list__wrapper-text pl-40 pr-40">
-													<div class="list__wrappers d-flex justify-content-start mb-49">
-														<div class="list__wrappers-type text-coal"> </div>
-														<div class="list__wrappers-time text-coal"> 4 min read </div>
 													</div>
-													<h4 class="list__title max-500"> <?php the_title(); ?> </h4>
-													<div class="list__content mb-82 text-coal"> You might have heard a million times that Search Engine Optimization is an essential tool for digital marketing. But d know how it works? You might have.. </div> <a href="https://rhad.agency/insights-details/benefits-of-influencer-marketing-to-grow-your-business/" class="list__link text-coal d-flex align-items-center">Read More <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/right-arrow_8260382a.svg" alt="right arrow " class="list__right-arrow lazy"> </a>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								
-								<!-- <div class="list">
+							</div>
+							<div class="container">
+								<div class="row mb-md-7 mb-xl-6 mt-md-7 mt-xl-6">
+									<div class="col-md-4">
+										<div class="categories__notify">
+											<div class="categories">
+												<div class="categories__wrapper">
+													<div class="wrapper">
+														<form method="GET" action="">
+															<div class="searchBar"> 
+																<input id="searchQueryInput" type="text" required name="search" placeholder="Search" value="" /> 
+																<button id="searchQuerySubmit" type="submit"> 
+																	<img class="lazy" src="data:image/svg+xml,	%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/search-icon_c04bcdc7.svg" viewBox="0 0 24 24"> 
+																</button> 
+															</div>
+														</form>
+													</div>
+												</div>
+
+												<div class="categories__list-wrapper">
+													<h3 class="categories__title text-coal">Categories</h3>
+													<?php
+													$cat = get_categories(array('taxonomy' => 'category'));
+													// echo "<pre>";
+													// print_r($cat);
+													?>
+													<ul class="categories__menu">
+														<li class="categories__menu-item">
+															<a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=digital">
+																<?php
+																foreach ($cat as $catvalue) {
+																	echo "<li><a href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
+																}
+																?>
+															</a>
+														</li>
+														<!-- <li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=marketing">Marketing (1)</a> </li>
+												<li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=personal">Personal (3)</a> </li>
+												<li class="categories__menu-item"> <a class="categories__menu-item-link categories__menu-item-arrow collapsed text-coal" href="/insights/?category=stories">Stories (3)</a> </li> -->
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="list">
+											<?php
+											$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+
+											$args = array(
+											
+												'post_type' => 'post',
+												'orderby'    => 'ID',
+												'post_status' => 'publish',
+												'posts_per_page' => '3',
+												'paged' => $paged
+											);
+											if (isset($_GET['post_cat']) ) {
+
+												$args['tax_query'] = array(
+													array(
+														'taxonomy' => 'category',
+														'field' => 'slug',
+														'terms' => $_GET['post_cat'],
+											
+													)
+												);
+											}
+											if (isset($_GET['search']) ) {
+
+												$args['s'] = $_GET['search'];
+												
+											}
+											
+											
+											$result = new WP_Query($args);
+											if ($result->have_posts()) : ?>
+												<?php while ($result->have_posts()) : $result->the_post(); ?>
+
+													<div class="list__wrapper mb-6">
+														<div class="row list__wrapper-row">
+															<div class="col-md-4 col-sm-6 pl-0 pr-0">
+																<img data-sizes="auto" class="list__image lazyload" /> <?php the_post_thumbnail(); ?>
+															</div>
+															<div class="col-md-8 col-sm-6 d-flex align-items-center bg-white-gray">
+																<div class="list__wrapper-text pl-40 pr-40">
+																	<div class="list__wrappers d-flex justify-content-start mb-49">
+																		<div class="list__wrappers-type text-coal"> </div>
+																		<div class="list__wrappers-time text-coal"> <?php the_date(); ?> </div>
+																	</div>
+																	<h4 class="list__title max-500"> <?php the_title(); ?> </h4>
+																	<div class="list__content mb-82 text-coal"> You might have heard a million times that Search Engine Optimization is an essential tool for digital marketing. But d know how it works? You might have.. </div> <a href="" class="list__link text-coal d-flex align-items-center">Read More <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/right-arrow_8260382a.svg" alt="right arrow " class="list__right-arrow lazy"> </a>
+																</div>
+															</div>
+														</div>
+													</div>
+										</div>
+
+										<!-- <div class="list">
 									<div class="list__wrapper mb-6">
 										<div class="row list__wrapper-row">
 											<div class="col-md-4 col-sm-6 pl-0 pr-0"> <img data-sizes="auto" data-srcset="https://rhad.agency/wp-content/uploads/2022/01/mobile-app-150x150@2x.jpg 300w, https://rhad.agency/wp-content/uploads/2022/01/mobile-app-150x150.jpg 150w, https://rhad.agency/wp-content/uploads/2022/01/mobile-app-20x20.jpg 20w, https://rhad.agency/wp-content/uploads/2022/01/mobile-app-100x100.jpg 100w, https://rhad.agency/wp-content/uploads/2022/01/mobile-app.jpg 592w" class="list__image lazyload" /> </div>
@@ -390,23 +422,34 @@
 										</div>
 									</div>
 								</div> -->
-								<?php endwhile; ?>
-								<?php endif; wp_reset_postdata(); ?>
+									<?php endwhile; ?>
+								<?php endif;
+											wp_reset_postdata(); ?>
+
 								<div class="pagination-blog">
-									<div class="pagination-blog__lists"> 
-										<span aria-current="page" class="page-numbers current">1</span> 
+									<div class="pagination-blog__lists">
+										<?php
+											$big = 999999999;
+											echo paginate_links(array(
+												'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+												'format' => '?paged=%#%',
+												'current' => max(1, get_query_var('paged')),
+												'total' =>  $result->max_num_pages
+											));
+										?>
+										<!-- <span aria-current="page" class="page-numbers current">1</span> 
 										<a class="page-numbers" href="">2</a> 
-										<a class="next page-numbers" href="">Next</a> 
+										<a class="next page-numbers" href="">Next</a>  -->
 									</div>
 								</div>
-							
+
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
 				</section>
 			</div>
 		</main>
-		
+
 		<footer class="footer-info footer g-gutter">
 			<div class="container">
 				<div class="row mx-sm-0 mx-intermediate-52">
