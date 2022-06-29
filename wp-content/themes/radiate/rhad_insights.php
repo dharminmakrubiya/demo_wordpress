@@ -201,7 +201,46 @@
 					</nav>
 				</div>
 			</header>
+			<?php
+			$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+
+			// echo "<pre>";
+			// print_r($the_query);
+			$args = array(
+				'post_type' => 'post',
+				'orderby'    => 'ID',
+				'post_status' => 'publish',
+				'posts_per_page' => '3',
+				'paged' => $paged	
+			);
+
+			if (isset($_GET['post_cat'])) {
+
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => 'category',
+						'field' => 'slug',
+						'terms' => $_GET['post_cat'],
+
+					)
+				);
+			}
+			// if (isset($_GET['post_tag']) ) {
+
+			// 	$args['tax_query'] = $_GET['post_tag'];
+
+			// }
+			if (isset($_GET['search'])) {
+
+				$args['s'] = $_GET['search'];
+			}
+
+
+			$result = new WP_Query($args);
+			$count = $result->found_posts;?>
+			
 			<div class="content page__content">
+
 				<section class="blogs">
 					<div class="container">
 						<h2 class="blogs__head mt-xl-0 mb-xxl-89 mt-md-46 mb-md-89 mb-3 pl-3 pl-sm-0"> Insights </h2>
@@ -217,7 +256,7 @@
 								</div>
 								<div class="col-sm-8 breadcrumbs__wrapper-right">
 									<div class="breadcrumbs__col-wrapper w-100">
-										<div class="breadcrumbs__result">Showing 4 of 5 results</div>
+										<div class="breadcrumbs__result">Showing 4 of <?php echo $count; ?> results</div>
 										<div class="breadcrumbs__category">
 											<div class="dropdown">
 												<button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categories &nbsp; &nbsp;
@@ -229,9 +268,9 @@
 												?>
 												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 													<?php
-													foreach ($cat as $catvalue) {
-														echo "<li><a  href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
-													}
+														foreach ($cat as $catvalue) {
+															echo "<li><a  href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
+														}
 													?>
 													<!--<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=digital">Digital</a> 
 													 <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=marketing">Marketing</a> 
@@ -240,26 +279,25 @@
 												</div>
 											</div>
 											<div class="breadcrumbs__tag">
-
+												
 												<div class="dropdown"> <button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tags &nbsp; &nbsp; </button>
 													<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 														<?php
 														$tags = get_tags(array(
 															'hide_empty' => false
 														));
-														
+
 														// echo "<pre>";
 														// print_r($tags);
 														?>
-														
+
 														<?php
-														
-														foreach ($tags as $tag) 
-														{
+
+														foreach ($tags as $tag) {
 															echo "<li><a  href=\"$postid?post_tag=$tag->slug\">$tag->name</a></li>";
 															// echo '<li>' . $tag->name . '</li>';
 														}
-														
+
 														?>
 														<!-- <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr">HR</a> 
 													<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr-ethics">HR ethics</a>
@@ -282,11 +320,11 @@
 												<div class="categories__wrapper">
 													<div class="wrapper">
 														<form method="GET" action="">
-															<div class="searchBar"> 
-																<input id="searchQueryInput" type="text" required name="search" placeholder="Search" value="" /> 
-																<button id="searchQuerySubmit" type="submit"> 
-																	<img class="lazy" src="data:image/svg+xml,	%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/search-icon_c04bcdc7.svg" viewBox="0 0 24 24"> 
-																</button> 
+															<div class="searchBar">
+																<input id="searchQueryInput" type="text" required name="search" placeholder="Search" value="" />
+																<button id="searchQuerySubmit" type="submit">
+																	<img class="lazy" src="data:image/svg+xml,	%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/search-icon_c04bcdc7.svg" viewBox="0 0 24 24">
+																</button>
 															</div>
 														</form>
 													</div>
@@ -319,36 +357,8 @@
 									</div>
 									<div class="col-md-8">
 										<div class="list">
+ 
 											<?php
-											$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-
-											$args = array(
-											
-												'post_type' => 'post',
-												'orderby'    => 'ID',
-												'post_status' => 'publish',
-												'posts_per_page' => '3',
-												'paged' => $paged
-											);
-											if (isset($_GET['post_cat']) ) {
-
-												$args['tax_query'] = array(
-													array(
-														'taxonomy' => 'category',
-														'field' => 'slug',
-														'terms' => $_GET['post_cat'],
-											
-													)
-												);
-											}
-											if (isset($_GET['search']) ) {
-
-												$args['s'] = $_GET['search'];
-												
-											}
-											
-											
-											$result = new WP_Query($args);
 											if ($result->have_posts()) : ?>
 												<?php while ($result->have_posts()) : $result->the_post(); ?>
 
@@ -366,6 +376,7 @@
 																	<h4 class="list__title max-500"> <?php the_title(); ?> </h4>
 																	<div class="list__content mb-82 text-coal"> You might have heard a million times that Search Engine Optimization is an essential tool for digital marketing. But d know how it works? You might have.. </div> <a href="" class="list__link text-coal d-flex align-items-center">Read More <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/right-arrow_8260382a.svg" alt="right arrow " class="list__right-arrow lazy"> </a>
 																</div>
+
 															</div>
 														</div>
 													</div>
@@ -429,13 +440,13 @@
 								<div class="pagination-blog">
 									<div class="pagination-blog__lists">
 										<?php
-											$big = 999999999;
-											echo paginate_links(array(
-												'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-												'format' => '?paged=%#%',
-												'current' => max(1, get_query_var('paged')),
-												'total' =>  $result->max_num_pages
-											));
+										$big = 999999999;
+										echo paginate_links(array(
+											'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+											'format' => '?paged=%#%',
+											'current' => max(1, get_query_var('paged')),
+											'total' =>  $result->max_num_pages
+										));
 										?>
 										<!-- <span aria-current="page" class="page-numbers current">1</span> 
 										<a class="page-numbers" href="">2</a> 
@@ -500,6 +511,7 @@
 					<div class="footer__col col-sm-3 col-md-3">
 						<div class="footer__col-wrapper dropdown">
 							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Follow us</h6>
+
 							<div class="footer__col-links dropdown-menu mt-83">
 								<div class="d-flex footer__social-icons"> <a href="https://www.facebook.com/rhadagency/" target="_blank"> <img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/facebook-_-24-_-Outline.svg" alt="Facebook"> </a> <a href="https://www.linkedin.com/company/rhad/mycompany/" target="_blank"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/linkedin-_-24-_-Outline.svg" alt="Linkedin" class="mx-21 lazy"> </a> <a href="https://www.instagram.com/rhad.agency/" target="_blank"> <img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/instagram-_-24-_-Outline.svg" alt="Instagram"> </a> </div>
 							</div>
@@ -510,6 +522,7 @@
 				<div class="row mt-md-60 my-47 mt-xl-100 footer__tablet-content m-0 mx-sm-0 mx-intermediate-52">
 					<div class="col-md-5">
 						<div class="row footer__company-info m-0">
+
 							<div class="col p-0"> <a href="/" class=""> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" /> </a>
 								<div class="footer__copyright">@ 2022 RHAD AGENCY. All Rights Reserved.</div>
 							</div>

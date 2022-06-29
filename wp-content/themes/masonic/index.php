@@ -79,7 +79,7 @@ $c = get_categories(array('taxonomy'=>'Companies'));
 
          <?php endwhile; ?>
          
-         <div >
+         <div>
 
 		
       <?php else : ?>
