@@ -165,7 +165,7 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XG7CK2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div class="page page_dark" role="document">
 		<main class="page__wrapper" id="main">
-			<header class="page__header header position-fixed page__header_loading"> <a href="/" class="logo_link primary-nav__logo-mobile"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logo-mobile-img lazy"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/uploads/2021/10/Frame-43-1.svg" alt="" class="primary-nav__logo-mobile-img_ipad lazy"> </a>
+			<header class="page__header position-fixed header  page__header_loading"> <a href="/" class="logo_link primary-nav__logo-mobile"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logo-mobile-img lazy"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/uploads/2021/10/Frame-43-1.svg" alt="" class="primary-nav__logo-mobile-img_ipad lazy"> </a>
 				<div class="container">
 					<nav class="row no-gutters navbar navbar-white navbar-expand-sm header-main justify-content-space-between">
 						<div class="col-12">
@@ -175,12 +175,42 @@
 								<div class="navbar__logo"> </div>
 							</div>
 							<div class="row primary-nav mx-sm-0 mx-intermediate-52">
-								<div class="col-12 col-md-4 primary-nav__main-logo justify-content-start align-items-center d-none d-md-flex"> <a href="/" class="primary-logo"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_red lazy" /> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/white_rhad_b2bc970f.svg" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_white lazy" /> </a> </div>
+								<div class="col-12 col-md-4 primary-nav__main-logo justify-content-start align-items-center d-none d-md-flex"> 
+									<a href="/" class="primary-logo"> 
+										
+										<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_red lazy" /> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/white_rhad_b2bc970f.svg" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_white lazy" /> 
+									</a> 
+								</div>
 								<div class="col-12 col-md-8 col-lg-8 mt-65 mt-sm-0">
 									<div class="collapse navbar-collapse" id="navbar-collapse">
+										
 										<ul class="primary-nav__items jsPrimaryMenu justify-content-start">
-											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="#" class="mr-2 dropdown-toggle nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"> Solutions </a>
+																				
+										
+										<!-- <?php 
+											wp_nav_menu( 
+												array( 
+													'theme_location' => 'primary',
+													'container_class' => ''
+												) 
+											); 
+										?> -->
+										
+
+										<?php
+											$menuLocations = get_nav_menu_locations();
+											$menuID = $menuLocations['primary'];
+											// print_r($menuLocations);
+											$a = wp_get_menu_array($menuID);
+											// echo "<pre>";
+											// print_r($a);
+										?>
+										<?php foreach ($a as $me) {?>
+											<?php $c ?>
+											 
+											<!-- <li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="#" class="mr-2 dropdown-toggle nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"> Solutions </a>
 												<div class="primary-nav__item-sub-menu dropdown-menu">
+											
 													<div class="primary-nav__item-sub-menu-col" style="width: auto;">
 														<div class="primary-nav__item-sub-menu-wrapper"> <a href="https://rhad.agency/solutions/creative/" class="primary-nav__item-sub-menu-anchor jsPrimaryChildNav"> Creative </a> </div>
 														<div class="primary-nav__item-sub-menu-wrapper"> <a href="https://rhad.agency/solutions/technology/" class="primary-nav__item-sub-menu-anchor jsPrimaryChildNav"> Technology </a> </div>
@@ -188,11 +218,15 @@
 														<div class="primary-nav__item-sub-menu-wrapper"> <a href="https://rhad.agency/solutions/security/" class="primary-nav__item-sub-menu-anchor jsPrimaryChildNav"> Security </a> </div>
 													</div>
 												</div>
+											</li> -->
+											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> 
+												<a href="<?php echo $me['url']; ?>" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false"> <?php echo $me['title']; ?>  </a> 
 											</li>
-											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="https://rhad.agency/portfolio/" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false"> Portfolio </a> </li>
-											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="https://rhad.agency/insights/" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel active" aria-haspopup="true" aria-expanded="false"> Insights </a> </li>
-											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="https://rhad.agency/psg/" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false"> Grants </a> </li>
+											<!-- <li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="https://rhad.agency/insights/" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel active" aria-haspopup="true" aria-expanded="false"> Insights </a> </li>
+											<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav"> <a href="https://rhad.agency/psg/" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false"> Grants </a> </li> -->
+										<?php } ?>
 										</ul>
+
 										<li class="nav-item dropdown primary-nav__item primary-nav__item_btn jsPrimaryParentdNav"> <a href="/contact-us" class="btn btn_xxs btn_alpha w-sm-100 mb-xss-2 mb-sm-0 primary-nav__item_btn primary-nav__item_btn-talk" type="submit">Let’s talk</a> </li>
 									</div>
 								</div>
@@ -202,7 +236,7 @@
 				</div>
 			</header>
 			<?php
-			 
+
 			$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
 			// echo "<pre>";
@@ -212,7 +246,7 @@
 				'orderby'    => 'ID',
 				'post_status' => 'publish',
 				'posts_per_page' => '3',
-				'paged' => $paged	
+				'paged' => $paged
 			);
 
 			if (isset($_GET['post_cat'])) {
@@ -238,9 +272,10 @@
 
 
 			$result = new WP_Query($args);
-			$count = $result->found_posts;?>
+			$count = $result->found_posts; ?>
 
 			<div class="content page__content">
+
 
 				<section class="blogs">
 					<div class="container">
@@ -269,9 +304,9 @@
 												?>
 												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 													<?php
-														foreach ($cat as $catvalue) {
-															echo "<li><a  href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
-														}
+													foreach ($cat as $catvalue) {
+														echo "<li><a  href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
+													}
 													?>
 													<!--<a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=digital">Digital</a> 
 													 <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?category=marketing">Marketing</a> 
@@ -280,7 +315,7 @@
 												</div>
 											</div>
 											<div class="breadcrumbs__tag">
-												
+
 												<div class="dropdown"> <button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tags &nbsp; &nbsp; </button>
 													<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 														<?php
@@ -358,7 +393,7 @@
 									</div>
 									<div class="col-md-8">
 										<div class="list">
- 
+
 											<?php
 											if ($result->have_posts()) : ?>
 												<?php while ($result->have_posts()) : $result->the_post(); ?>
@@ -463,6 +498,7 @@
 		</main>
 
 		<footer class="footer-info footer g-gutter">
+			
 			<div class="container">
 				<div class="row mx-sm-0 mx-intermediate-52">
 					<div class="footer__col col-sm-3 col-md-3"> <a href="/"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo lazy" /></a> </div>
@@ -523,11 +559,30 @@
 				<div class="row mt-md-60 my-47 mt-xl-100 footer__tablet-content m-0 mx-sm-0 mx-intermediate-52">
 					<div class="col-md-5">
 						<div class="row footer__company-info m-0">
-
+										
 							<div class="col p-0"> <a href="/" class=""> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" /> </a>
 								<div class="footer__copyright">@ 2022 RHAD AGENCY. All Rights Reserved.</div>
 							</div>
 						</div>
+					</div>
+					
+					<div class="col-md-5">
+					<?php 
+								$menuLocations1 = get_nav_menu_locations();
+								$menuID1 = $menuLocations1['my-custom-menu'];
+								// echo "<pre>";
+								// print_r($menuLocations1);
+								$abc = wp_get_menu_array($menuID1);
+							?>
+							<?php foreach ($abc as $xyz) {?>
+							<?php $c ?>
+							<div class="row footer__company-info m-0">
+							
+							<div class="col p-0"> <a href="" class=""> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" /> </a>
+								<div class="footer__copyright" href=""><?php echo $xyz['title']; ?></div>
+							</div>
+						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
