@@ -282,6 +282,18 @@ function my_number_pagination()
 add_action( 'init', 'my_custom_menu' );
  
 
+function my_custom_menu_two() {
+    register_nav_menus(
+        array(
+            'my-custom-menu_two' => _( 'Footer Two Menu' ),
+        )
+    );
+}
+add_action( 'init', 'my_custom_menu_two' );
+ 
+
+
+
 
 function wp_get_menu_array($current_menu) {
 
@@ -307,4 +319,21 @@ function wp_get_menu_array($current_menu) {
         }
     }
     return $menu;
+}
+
+
+add_action( 'pre_get_posts',  'set_posts_per_page'  );
+function set_posts_per_page( $query ) {
+
+  global $wp_the_query;
+
+  if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
+    $query->set( 'posts_per_page', 3 );
+  }
+  elseif ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
+    $query->set( 'posts_per_page', 5 );
+  }
+  // Etc..
+
+  return $query;
 }
