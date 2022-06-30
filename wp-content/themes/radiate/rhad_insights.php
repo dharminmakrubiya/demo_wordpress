@@ -278,9 +278,10 @@
 			// global $wp_query;
 			// $total_posts = $wp_query->post_count;
 			$my_query = new WP_Query($args);
-
 			$count1 = $my_query->post_count;
 			
+				
+
 			?>
 
 			<div class="content page__content">
