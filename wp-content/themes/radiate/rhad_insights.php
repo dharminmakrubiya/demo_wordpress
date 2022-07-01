@@ -315,12 +315,13 @@
 												<button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categories &nbsp; &nbsp;
 												</button>
 												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
-													<a class="dropdown-item breadcrumbs__menu-items" <?php
-																										$cat = get_categories(array('taxonomy' => 'category'));
+													<a class="dropdown-item breadcrumbs__menu-items" 
+													<?php												
+														$cat = get_categories(array('taxonomy' => 'category'));
 																										// echo "<pre>";
 																										// print_r($cat);
-																										?> <div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
-																											
+																									?> 
+																										<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 														<?php
 														foreach ($cat as $catvalue) {
 															echo "<a class='dropdown-item breadcrumbs__menu-items' href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a>";
@@ -493,7 +494,7 @@
 							<ul class="footer__col-links dropdown-menu">
 								<?php
 								$menuLocations2 = get_nav_menu_locations();
-								$menuID2 = $menuLocations2['my-custom-menu_two'];
+								$menuID2 = $menuLocations2['my-custom-menu-dharmin'];
 								// echo "<pre>";
 								// print_r($menuLocations1);
 								$abc = wp_get_menu_array($menuID2);
@@ -501,7 +502,7 @@
 								?>
 								<?php foreach ($abc as $xyz) { ?>
 									<?php $c ?>
-									<li class="footer__col-link-wrapper"> <a href="/solutions/creative/" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
+									<li class="footer__col-link-wrapper"> <a href="<?php echo $xyz['url']; ?>" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
 									<!-- <li class="footer__col-link-wrapper"> <a href="/solutions/technology/" class="footer__col-link">Technology </a></li>
 								<li class="footer__col-link-wrapper"> <a href="/solutions/marketing/" class="footer__col-link">Marketing </a></li> -->
 							</ul>
@@ -531,7 +532,7 @@
 							<ul class="footer__col-links dropdown-menu">
 								<?php
 								$menuLocations1 = get_nav_menu_locations();
-								$menuID1 = $menuLocations1['my-custom-menu'];
+								$menuID1 = $menuLocations1['my-custom-menu-about'];
 								// echo "<pre>";
 								// print_r($menuLocations1);
 								$abc = wp_get_menu_array($menuID1);
@@ -539,7 +540,7 @@
 								?>
 								<?php foreach ($abc as $xyz) { ?>
 									<?php $c ?>
-									<li class="footer__col-link-wrapper"> <a href="/portfolio/" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
+									<li class="footer__col-link-wrapper"> <a href="<?php echo $xyz['url']; ?>" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
 							</ul>
 						<?php } ?>
 						</div>

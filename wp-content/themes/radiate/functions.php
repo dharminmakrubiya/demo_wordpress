@@ -292,6 +292,25 @@ function my_custom_menu_two() {
 add_action( 'init', 'my_custom_menu_two' );
  
 
+function my_custom_menu_dharmin() {
+    register_nav_menus(
+        array(
+            'my-custom-menu-dharmin' => _( 'Footer 2' ),
+        )
+    );
+}
+add_action( 'init', 'my_custom_menu_dharmin' );
+ 
+
+function my_custom_menu_about() {
+    register_nav_menus(
+        array(
+            'my-custom-menu-about' => _( 'Footer 3' ),
+        )
+    );
+}
+add_action( 'init', 'my_custom_menu_about' );
+ 
 
 
 
@@ -324,7 +343,7 @@ function wp_get_menu_array($current_menu) {
 
 function theme_support_options() {
 	$defaults = array(
-		'height'      => 100,
+		'height'      => 10,
 		'width'       => 100,
 		'flex-width'  => false,
 		'flex-height' => false
