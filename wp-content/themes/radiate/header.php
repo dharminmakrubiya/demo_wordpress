@@ -80,7 +80,7 @@ if ( function_exists( 'wp_body_open' ) ) {
 				?>
 			</nav><!-- #site-navigation -->
 		</div><!-- .inner-wrap header-wrap -->
-	</header><!-- #masthead -->
+	</header>#masthead
 
 	<div id="content" class="site-content">
 		<div class="inner-wrap clearfix">
