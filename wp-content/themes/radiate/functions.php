@@ -322,18 +322,16 @@ function wp_get_menu_array($current_menu) {
 }
 
 
-add_action( 'pre_get_posts',  'set_posts_per_page'  );
-function set_posts_per_page( $query ) {
-
-  global $wp_the_query;
-
-  if ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_search() ) ) {
-    $query->set( 'posts_per_page', 3 );
-  }
-  elseif ( ( ! is_admin() ) && ( $query === $wp_the_query ) && ( $query->is_archive() ) ) {
-    $query->set( 'posts_per_page', 5 );
-  }
-  // Etc..
-
-  return $query;
-}
+function theme_support_options() {
+	$defaults = array(
+		'height'      => 100,
+		'width'       => 100,
+		'flex-width'  => false,
+		'flex-height' => false
+	);
+	add_theme_support( 'custom-logo', $defaults );
+   }
+   // call the function in the hook
+   add_action( 'after_setup_theme', 'theme_support_options' );
+   
+   

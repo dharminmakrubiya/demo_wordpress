@@ -176,9 +176,12 @@
 							</div>
 							<div class="row primary-nav mx-sm-0 mx-intermediate-52">
 								<div class="col-12 col-md-4 primary-nav__main-logo justify-content-start align-items-center d-none d-md-flex">
+								
+                        	</a>
 									<a href="/" class="primary-logo">
-
-										<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_red lazy" /> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/white_rhad_b2bc970f.svg" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_white lazy" />
+									<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                            		<?php the_custom_logo(); ?><?php //bloginfo('name');?>
+										<!-- <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_red lazy" /> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/white_rhad_b2bc970f.svg" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_white lazy" /> -->
 									</a>
 								</div>
 								<div class="col-12 col-md-8 col-lg-8 mt-65 mt-sm-0">
@@ -227,7 +230,7 @@
 											<?php } ?>
 										</ul>
 
-										<li class="nav-item dropdown primary-nav__item primary-nav__item_btn jsPrimaryParentdNav"> <a href="/contact-us" class="btn btn_xxs btn_alpha w-sm-100 mb-xss-2 mb-sm-0 primary-nav__item_btn primary-nav__item_btn-talk" type="submit">Let’s talk</a> </li>
+										<li class="nav-item dropdown primary-nav__item primary-nav__item_btn jsPrimaryParentdNav"> <a href="http://mydemo.local/lets-talk/" class="btn btn_xxs btn_alpha w-sm-100 mb-xss-2 mb-sm-0 primary-nav__item_btn primary-nav__item_btn-talk" type="submit">Let’s talk</a> </li>
 									</div>
 								</div>
 							</div>
@@ -279,8 +282,9 @@
 			// $total_posts = $wp_query->post_count;
 			$my_query = new WP_Query($args);
 			$count1 = $my_query->post_count;
+			// echo $count1;
 			
-				
+
 
 			?>
 
@@ -534,12 +538,14 @@
 							</ul>
 						</div>
 					</div>
-					<div class="footer__col col-sm-3 col-md-3">
+					<!-- <div class="footer__col col-sm-3 col-md-3">
 						<div class="footer__col-wrapper dropdown">
 							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Partners with</h6>
-							<div class="dropdown-menu"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/footer/soda_af5cae11.png" alt="" class="footer__company-logo lazy"> </div>
+							<div class="dropdown-menu"> 
+							
+								<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/footer/soda_af5cae11.png" alt="" class="footer__company-logo lazy"> </div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="row footer__second-row mx-0 justify-content-end mx-sm-0 mx-intermediate-52">
 					<div class="footer__col col-sm-3 col-md-3">
@@ -571,14 +577,15 @@
 				<hr class="footer__seperator footer__hide-tablet">
 				<div class="row mt-md-60 my-47 mt-xl-100 footer__tablet-content m-0 mx-sm-0 mx-intermediate-52">
 					<div class="col-md-5">
-						<div class="row footer__company-info m-0">
-
-							<div class="col p-0"> <a href="/" class=""> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" /> </a>
-								<div class="footer__copyright">@ 2022 RHAD AGENCY. All Rights Reserved.</div>
-							</div>
-
-
+					<div class="footer__col col-sm-3 col-md-3">
+						<div class="footer__col-wrapper dropdown">
+							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RHAD Agency</h6>
+							<div class="dropdown-menu"> 
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                            		<?php the_custom_logo(); ?><?php //bloginfo('name');?>
+								<img   class="footer__company-logo lazy"> </div>
 						</div>
+					</div>
 					</div>
 
 					<div class="col-md-5">
@@ -595,17 +602,16 @@
 							<?php $c ?>
 							<div class="row footer__company-info m-0">
 								<div class="col p-0"> <a href="" class="">
-
 										<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/		wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" />
 									</a>
 									<div class="footer__copyright" href=""><?php echo $xyz['title']; ?> </div>
-
 								</div>
 							</div>
 						<?php } ?>
 
 					</div>
 					<div class="col-md-2">
+						<!-- <h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Supports</h6> -->
 						<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Supports</h6>
 
 						<?php
