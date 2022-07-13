@@ -202,12 +202,17 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
+
 require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+require get_template_directory() . '/inc/myclass.php';
+
+// require get_template_directory() . '/wp-content/plugins/customshortcodes/tab_1.php';
 
 /**
  * Calling in the admin area for the Welcome Page as well as for the new theme notice too.
@@ -220,7 +225,10 @@ if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin/class-radiate-welcome-notice.php';
 	require get_template_directory() . '/inc/admin/class-radiate-upgrade-notice.php';
 	require get_template_directory() . '/inc/admin/class-radiate-theme-review-notice.php';
+
+	// require get_template_directory() . 'class-mycode.php';
 }
+
 
 add_theme_support('custom-logo');
 function themename_custom_logo_setup()
@@ -237,6 +245,8 @@ function themename_custom_logo_setup()
     add_theme_support('custom-logo', $defaults);
 }
 add_action('after_setup_theme', 'themename_custom_logo_setup');
+
+
 
 
 
@@ -354,3 +364,62 @@ function theme_support_options() {
    add_action( 'after_setup_theme', 'theme_support_options' );
    
    
+
+
+
+
+   function category_wise_post()
+   {
+	   $args = array( 
+		   'posts_per_page' => -1,
+		   'post_type' => 'post'
+	   );
+   
+	   $query = new WP_Query($args);   
+	   $q = array();
+   
+	   while ( $query->have_posts() ) { 
+   
+		   $query->the_post(); 
+		   
+		   $a["link"] = '<a href="'. get_permalink() .'">' . get_the_title() .'</a>';
+		   $a["title"] = get_the_title();
+		   // $a["category"] = get_the_category( get_the_ID() );
+   
+		   $categories = get_the_category(get_the_ID());//$post->ID
+		   $ca = array();
+			   
+   foreach($categories as $category){
+   $ca = $category->name;
+   
+   }
+   $a["category"] = $ca;
+		   
+		   // $a["content"] = the_content();
+		   $a["permalink"] = get_permalink();
+		   $a["feature_image_url"] = get_the_post_thumbnail_url(get_the_id());
+		   //$a["comment_count"] = get_comments_number( $post->ID );
+		   //$a["post_views"] = customSetPostViews($post->ID);
+		   // $a["id"] = $post->ID;
+   
+		   $categories = get_the_category();
+		   
+		   foreach ( $categories as $key=>$category ) {
+   
+			   // $b = '<a href="' . get_category_link( $category ) . '">' . $category->name . '</a>';    
+			   $b =  $category->name ;
+   
+		   }
+   
+		   $q[$b][] = $a; // Create an array with the category names and post titles
+	   }
+	   
+	   wp_reset_postdata();
+	   return $q;
+   }
+   
+
+
+
+//bootstrap tabing
+

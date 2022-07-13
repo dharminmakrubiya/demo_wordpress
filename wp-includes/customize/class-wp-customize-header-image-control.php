@@ -59,6 +59,7 @@ class WP_Customize_Header_Image_Control extends WP_Customize_Image_Control {
 				'section'  => 'header_image',
 				'removed'  => 'remove-header',
 				'get_url'  => 'get_header_image',
+
 			)
 		);
 

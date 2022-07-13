@@ -148,6 +148,7 @@
 		gtag('js', new Date());
 		gtag('config', 'AW-306906101');
 	</script>
+
 	<script>
 		function require(url, callback) {
 			var s = document.createElement('script');
@@ -181,7 +182,10 @@
 									<a href="/" class="primary-logo">
 										<a href="<?php echo esc_url(home_url('/')); ?>">
 											<?php the_custom_logo(); ?><?php //bloginfo('name');
-																		?>
+	
+									?>
+									
+
 											<!-- <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_red lazy" /> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/logo/white_rhad_b2bc970f.svg" alt="" class="primary-nav__logodeskop primary-nav__logodeskop_white lazy" /> -->
 										</a>
 								</div>
@@ -189,18 +193,6 @@
 									<div class="collapse navbar-collapse" id="navbar-collapse">
 
 										<ul class="primary-nav__items jsPrimaryMenu justify-content-start">
-
-
-											<!-- <?php
-													wp_nav_menu(
-														array(
-															'theme_location' => 'primary',
-															'container_class' => ''
-														)
-													);
-													?> -->
-
-
 											<?php
 											$menuLocations = get_nav_menu_locations();
 											$menuID = $menuLocations['primary'];
@@ -223,6 +215,7 @@
 													</div>
 												</div>
 											</li> -->
+											
 												<li class="nav-item dropdown primary-nav__item jsPrimaryParentdNav">
 													<a href="<?php echo $me['url']; ?>" class="mr-2 nav-link header__items-menubox primary-nav__item-anchor jsPrimaryParentdNavLabel" aria-haspopup="true" aria-expanded="false"> <?php echo $me['title']; ?> </a>
 												</li>
@@ -237,12 +230,33 @@
 							</div>
 						</div>
 					</nav>
-				</div>
+				</div>	
 			</header>
+
+			<?php 
+
+			$c = new myclass;
+
+			$d=$c->myfunction();
+			
+			
+			// echo "<pre>";
+			// print_r($d);
+			
+		// foreach ($d as $d1) {
+		// 	echo '<h4 class="list__title max-500" > <a> '.$d1['title'].' </a> </h4>';
+		//  }
+			?>
+								
+
 			<?php
 
-			$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+			// $c = new dharmin;
 
+			// $d=$c->sliderModule();
+			// print_r($d);
+			// $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 			// echo "<pre>";
 			// print_r($the_query);
 			$args = array(
@@ -252,6 +266,7 @@
 				'posts_per_page' => '3',
 				'paged' => $paged
 			);
+			
 
 			if (isset($_GET['post_cat'])) {
 
@@ -266,6 +281,7 @@
 				);
 			}
 
+			
 			// if (isset($_GET['post_tag']) ) {
 
 			// 	$args['tax_query'] = $_GET['post_tag'];
@@ -317,21 +333,23 @@
 												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 													<a class="dropdown-item breadcrumbs__menu-items" 
 													<?php												
-														$cat = get_categories(array('taxonomy' => 'category'));
-																										// echo "<pre>";
-																										// print_r($cat);
-																									?> 
-																										<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
+														$cat = get_categories(array(
+															'taxonomy' => 'category'		
+														));
+													// echo "<pre>";
+													// print_r($cat);
+													?> 
+														<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton">
 														<?php
 														foreach ($cat as $catvalue) {
-															echo "<a class='dropdown-item breadcrumbs__menu-items' href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a>";
+															echo "<a class='dropdown-item breadcrumbs__menu-items' href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name </a>";
 														}
 														?>
 													</a>
 												</div>
 											</div>
 										</div>
-										<div class="breadcrumbs__tag">
+										<!-- <div class="breadcrumbs__tag">
 											<div class="dropdown"> <button class="btn breadcrumbs__button-dropdown breadcrumbs__button-dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tags &nbsp; &nbsp;
 												</button>
 												<div class="dropdown-menu breadcrumbs__menu-items" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item breadcrumbs__menu-items" href="/insights/?tags=hr">
@@ -354,7 +372,7 @@
 														?>
 													</a> </div>
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 
@@ -420,10 +438,9 @@
 																	<div class="list__wrappers-type text-coal"> </div>
 																	<div class="list__wrappers-time text-coal"> <?php the_date(); ?> </div>
 																</div>
-																<h4 class="list__title max-500"> <?php the_title(); ?> </h4>
-																<div class="list__content mb-82 text-coal"> You might have heard a million times that Search Engine Optimization is an essential tool for digital marketing. But d know how it works? You might have.. </div> <a href="" class="list__link text-coal d-flex align-items-center">Read More <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/right-arrow_8260382a.svg" alt="right arrow " class="list__right-arrow lazy"> </a>
+																<h4 class="list__title max-500" > <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a> </h4>
+																<div class="list__content mb-82 text-coal"> You might have heard a million times that Search Engine Optimization is an essential tool for digital marketing. But d know how it works? You might have.. </div> <a href="<?php the_permalink(); ?>" class="list__link text-coal d-flex align-items-center">Read More <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/themes/mint/dist/images/icon/right-arrow_8260382a.svg" alt="right arrow " class="list__right-arrow lazy"> </a>
 															</div>
-
 														</div>
 													</div>
 												</div>
@@ -439,17 +456,19 @@
 									<div class="pagination-blog">
 										<div class="pagination-blog__lists">
 											<?php
+											
 											$big = 999999999;
 											echo paginate_links(
 												array(
-													'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+													'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big  ) ) ),
 													'format' => '?paged=%#%',
 													'current' => max(1, get_query_var('paged')),
 													'total' =>  $result->max_num_pages
 												)
 											);
+											
 											?>
-
+											
 										</div>
 									</div>
 
@@ -459,129 +478,34 @@
 				</section>
 			</div>
 		</main>
-		<footer class="footer-info footer g-gutter">
-			<div class="container">
-				<div class="row mx-sm-0 mx-intermediate-52">
-					<div class="footer__col col-sm-3 col-md-3"> <a href="/">
-							<a href="<?php echo esc_url(home_url('/')); ?>">
-								<?php the_custom_logo(); ?><?php //bloginfo('name');
-															?>
-								<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo lazy" /></a> </div>
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact us</h6>
-							<ul class="footer__col-links dropdown-menu">
-								<?php
-								$menuLocations1 = get_nav_menu_locations();
-								$menuID1 = $menuLocations1['my-custom-menu'];
-								// echo "<pre>";
-								// print_r($menuLocations1);
-								$abc = wp_get_menu_array($menuID1);
 
-								?>
-								<?php foreach ($abc as $xyz) { ?>
-									<?php $c ?>
-									<!-- <li class="footer__col-link-wrapper"> <a href="mailto:hello@rhad.agency" class="footer__col-link">hello@rhad.agency</a></li> -->
-									<li class="footer__col-link-wrapper"> <a href="<?php echo $xyz['url']; ?>" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
-							</ul>
-						<?php } ?>
-						</div>
-					</div>
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions</h6>
 
-							<ul class="footer__col-links dropdown-menu">
-								<?php
-								$menuLocations2 = get_nav_menu_locations();
-								$menuID2 = $menuLocations2['my-custom-menu-dharmin'];
-								// echo "<pre>";
-								// print_r($menuLocations1);
-								$abc = wp_get_menu_array($menuID2);
 
-								?>
-								<?php foreach ($abc as $xyz) { ?>
-									<?php $c ?>
-									<li class="footer__col-link-wrapper"> <a href="<?php echo $xyz['url']; ?>" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
-									<!-- <li class="footer__col-link-wrapper"> <a href="/solutions/technology/" class="footer__col-link">Technology </a></li>
-								<li class="footer__col-link-wrapper"> <a href="/solutions/marketing/" class="footer__col-link">Marketing </a></li> -->
-							</ul>
-						<?php } ?>
-						</div>
-					</div>
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Partners with</h6>
-							<div class="dropdown-menu"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/footer/soda_af5cae11.png" alt="" class="footer__company-logo lazy"> </div>
-						</div>
-					</div>
-				</div>
-				<div class="row footer__second-row mx-0 justify-content-end mx-sm-0 mx-intermediate-52">
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head footer__col-head_white dropdown-toggle mb-md-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">RHAD</h6>
-							<ul class="footer__col-links dropdown-menu">
-								<li class="footer__col-link-wrapper footer__col-link-wrapper-max max-150"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14689.098392358155!2d72.50849773201469!3d23.013687709292554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e859816e51305%3A0xb773e26008f4d7e0!2sSoda%20In%20Mind!5e0!3m2!1sen!2sin!4v1656659768006!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About us</h6>
-							<ul class="footer__col-links dropdown-menu">
-								<?php
-								$menuLocations1 = get_nav_menu_locations();
-								$menuID1 = $menuLocations1['my-custom-menu-about'];
-								// echo "<pre>";
-								// print_r($menuLocations1);
-								$abc = wp_get_menu_array($menuID1);
 
-								?>
-								<?php foreach ($abc as $xyz) { ?>
-									<?php $c ?>
-									<li class="footer__col-link-wrapper"> <a href="<?php echo $xyz['url']; ?>" class="footer__col-link"><?php echo $xyz['title']; ?></a></li>
-							</ul>
-						<?php } ?>
-						</div>
-					</div>
-					<div class="footer__col col-sm-3 col-md-3">
-						<div class="footer__col-wrapper dropdown">
-							<h6 class="footer__col-head dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Follow us</h6>
-							<div class="footer__col-links dropdown-menu mt-83">
-								<div class="d-flex footer__social-icons"> <a href="" target="_blank"> <img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/facebook-_-24-_-Outline.svg" alt="Facebook"> </a> <a href="" target="_blank"> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/linkedin-_-24-_-Outline.svg" alt="Linkedin" class="mx-21 lazy"> </a> <a href="" target="_blank"> <img class="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="https://rhad.agency/wp-content/uploads/2022/04/instagram-_-24-_-Outline.svg" alt="Instagram"> </a> </div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr class="footer__seperator footer__hide-tablet">
-				<div class="row mt-md-60 my-47 mt-xl-100 footer__tablet-content m-0 mx-sm-0 mx-intermediate-52">
-					<div class="col-md-5">
-						<div class="row footer__company-info m-0">
-							<div class="col p-0"> <a href="/" class=""> <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" data-src="/wp-content/themes/mint/dist/images/logo/logo_10f1e6f6.png" alt="" class="footer__logo_mobile lazy" /> </a>
-								<div class="footer__copyright">@ 2022 RHAD AGENCY. All Rights Reserved.</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+
+
+											
+
+		
+
+
+
+
+
+
+
+
+
+
+
+		
+		<?php get_footer(); ?>
 
 
 	</div>
 	<script src='https://rhad.agency/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.7' id='regenerator-runtime-js'></script>
 	<script src='https://rhad.agency/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
-	<script id='contact-form-7-js-extra'>
-		/* <![CDATA[ */
-		var wpcf7 = {
-			"api": {
-				"root": "https:\/\/rhad.agency\/wp-json\/",
-				"namespace": "contact-form-7\/v1"
-			},
-			"cached": "1"
-		};
-		/* ]]> */
-	</script>
+	
 	<script src='https://rhad.agency/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.5.3' id='contact-form-7-js'></script>
 	<script src='https://rhad.agency/wp-content/plugins/carbonate-custom-plugin/js/aos.js?ver=1.0.0' id='aos.js-js'></script>
 	<script src='https://rhad.agency/wp-content/plugins/carbonate-custom-plugin/js/plugin-custom.js?ver=1.0.0' id='plugin-custom.js-js'></script>
@@ -592,87 +516,6 @@
 			<div></div>
 		</div>
 	</div>
-	<script type='text/javascript' id='fvm-delayjs' data-cfasync='false'>
-		! function(k, e, x) {
-			function r(d, a, g, b) {
-				return b = (a ? e.getElementById(a) : t) || e.createElement(d || "SCRIPT"), a && (b.id = a), g && (b.onload = g), b
-			}
-
-			function u(d) {
-				f(function(a) {
-					a = [].slice.call(e.querySelectorAll(d));
-					(function v(b, c) {
-						if (b = a.shift()) {
-							b.parentNode.removeChild(b);
-							var l = b,
-								m, n = void 0;
-							var p = r(l.nodeName);
-							var q = 0;
-							for (m = l.attributes; q < m.length; q++) "type" != (n = m[q]).name && p.setAttribute(n.name, n.value);
-							(c = (p.text = l.text, p)).src && !c.hasAttribute("async") ? (c.onload = c.onerror = v, e.head.appendChild(c)) : (e.head.appendChild(c),
-								v())
-						}
-					})()
-				})
-			}
-			var f, t, h = [],
-				w = /p/.test(e.readyState);
-			Function();
-			(f = function(d, a) {
-				w ? x(d, a) : h.push(d, a)
-			}).all = u;
-			f.js = function(d, a, g, b) {
-				f(function(c) {
-					(c = r(t, a, b)).src = d;
-					e.head.appendChild(c)
-				}, g)
-			};
-			k.addEventListener("onpageshow" in k ? "pageshow" : "load", function() {
-				for (w = !u(); h[0];) f(h.shift(), h.shift())
-			});
-			k.Defer = f
-		}(this, document, setTimeout);
-		const userInteractionEvents = ["mouseover", "keydown", "touchstart", "touchmove", "wheel"];
-		userInteractionEvents.forEach(function(event) {
-			window.addEventListener(event, triggerScriptLoader, {
-				passive: !0
-			})
-		});
-
-		function triggerScriptLoader() {
-			fvmloadscripts();
-			userInteractionEvents.forEach(function(event) {
-				window.removeEventListener(event, triggerScriptLoader, {
-					passive: !0
-				})
-			})
-		}
-
-		function fvmloadscripts() {
-			Defer.all('script[type="fvm-script-delay"]')
-		};
-	</script>
-	<script>
-		window.w3tc_lazyload = 1, window.lazyLoadOptions = {
-			elements_selector: ".lazy",
-			callback_loaded: function(t) {
-				var e;
-				try {
-					e = new CustomEvent("w3tc_lazyload_loaded", {
-						detail: {
-							e: t
-						}
-					})
-				} catch (a) {
-					(e = document.createEvent("CustomEvent")).initCustomEvent("w3tc_lazyload_loaded", !1, !1, {
-						e: t
-					})
-				}
-				window.dispatchEvent(e)
-			}
-		}
-	</script>
-	<script async src="https://rhad.agency/wp-content/plugins/w3-total-cache/pub/js/lazyload.min.js"></script>
 </body>
 
 </html>

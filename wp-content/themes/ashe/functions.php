@@ -868,3 +868,62 @@ function ashe_register_recommended_plugins() {
 }
 
 // add_action( 'tgmpa_register', 'ashe_register_recommended_plugins' );
+
+
+
+
+
+
+
+function category_wise_post()
+{
+	$args = array( 
+		'posts_per_page' => -1,
+		'post_type' => 'post'
+	);
+
+	$query = new WP_Query($args);   
+	$q = array();
+
+	while ( $query->have_posts() ) { 
+
+		$query->the_post(); 
+		
+		$a["link"] = '<a href="'. get_permalink() .'">' . get_the_title() .'</a>';
+		$a["title"] = get_the_title();
+		// $a["category"] = get_the_category( get_the_ID() );
+
+		$categories = get_the_category(get_the_ID());//$post->ID
+		$ca = array();
+			
+foreach($categories as $category){
+$ca = $category->name;
+
+}
+$a["category"] = $ca;
+		
+		// $a["content"] = the_content();
+		$a["permalink"] = get_permalink();
+		$a["feature_image_url"] = get_the_post_thumbnail_url(get_the_id());
+		//$a["comment_count"] = get_comments_number( $post->ID );
+		//$a["post_views"] = customSetPostViews($post->ID);
+		// $a["id"] = $post->ID;
+
+		$categories = get_the_category();
+		
+		foreach ( $categories as $key=>$category ) {
+
+			// $b = '<a href="' . get_category_link( $category ) . '">' . $category->name . '</a>';    
+			$b =  $category->name ;
+
+		}
+
+		$q[$b][] = $a; // Create an array with the category names and post titles
+	}
+	
+	wp_reset_postdata();
+	return $q;
+}
+
+
+
