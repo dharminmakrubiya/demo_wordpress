@@ -21,9 +21,11 @@ function display_custom_post_type($atts)
         'order' => 'ASC',
         'post_type' => 'post',
         'posts_per_page' => '3',
+
         //pagination
         'paged' => $paged
     );
+    
     if (!empty($category)) {
         $args['category_name'] = $category;
     }
