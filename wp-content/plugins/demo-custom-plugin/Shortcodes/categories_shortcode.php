@@ -221,7 +221,7 @@ function display_custom_post_type($atts)
         
     // );
 
-    getPagination(8,5);
+    getPagination(10,5);
 
     return $show;
 
