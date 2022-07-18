@@ -267,7 +267,6 @@
 				'paged' => $paged
 			);
 			
-
 			if (isset($_GET['post_cat'])) {
 
 				$args['tax_query'] = array(

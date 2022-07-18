@@ -927,3 +927,47 @@ $a["category"] = $ca;
 
 
 
+function getPagination($totalPages,$limit){
+    $fiterData = array();
+    $pageid = isset($_GET['pageid']) ? (int) $_GET['pageid'] : 1;
+    $output = '';
+    if(isset($totalPages) && $totalPages > 1) {
+        $i=0;
+        $prev = $pageid - 1;
+        $next = $pageid + 1; 
+        if(isset($_GET) && !empty($_GET)){
+            $fiterData = $_GET;
+        }else{
+            $fiterData['pageid'] = 1;
+        }
+        $output .= '';
+		
+        if(isset($pageid) && $pageid != 1){
+            $fiterData['pageid'] = $prev;
+            $output .= "";
+            $output .='<a href="?'.http_build_query($fiterData).'"> Prev </a>';
+            $output .= "";
+        }
+        for($i=1; $i <= $totalPages; $i++) {
+            if($pageid == $i) { 
+                $output .= "";
+                $output .='<span"> '.$i.' </span>';
+                $output .= ""; 
+            }else{
+                $fiterData['pageid'] = $i;
+                $output .= "";
+                $output .='<a href="?' .http_build_query($fiterData). '"> '.$i.' </a>';
+                $output .= "";
+            }
+        }
+        if(isset($pageid) && $pageid != $totalPages) {
+            $fiterData['pageid'] = $next;
+            $output .= "<li >";
+            $output .='<a  href="?'.http_build_query($fiterData).'"> Next </a>';
+            $output .= "";
+        }
+
+    }
+    echo $output;
+}
+
