@@ -1,5 +1,7 @@
 <?php
 
+use mtekk\adminKit\form;
+
 add_shortcode('post-1', 'display_custom_post_type');
 function display_custom_post_type($atts)
 {
@@ -13,14 +15,6 @@ function display_custom_post_type($atts)
 
     
 
-
-    $cat = get_categories(array('taxonomy' => 'category'));
-    // echo "<pre>";
-    // print_r($cat);
-
-    foreach ($cat as $catvalue) {
-        echo "<li><a href=\"?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
-    }
 
     // $cpt_name = 'post';
     // $fiterData = array();
@@ -147,7 +141,26 @@ function display_custom_post_type($atts)
     //     }
     // }
 
+    $cat = get_categories(array('taxonomy' => 'category'));
+    // echo "<pre>";
+    // print_r($cat);
+    // echo "Categories";
+    // foreach ($cat as $catvalue) {
+    //     echo "<li><a href=\"?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
+    // }
+    
 
+
+    
+
+    $category_year = get_categories(array('taxonomy' => 'category_year'));
+    // echo "<pre>";
+    // print_r($category_year);
+    // echo "Post Year";
+    // foreach ($category_year as $post_year) {
+    //     echo "<li><a href=\"?post_year=$post_year->slug\">$post_year->name</a></li>";
+    // }
+    
     
 
     extract(shortcode_atts(array(
@@ -165,23 +178,130 @@ function display_custom_post_type($atts)
         'order' => 'ASC',
         'post_type' => 'post',
         'posts_per_page' => '5',
-
         //pagination
         'paged' => $pageid
     );
+    
     $result = new WP_Query($args);
-    if (isset($_GET['post_cat'])) {
 
+    // if (isset($_GET['post_cat']) && $_GET['post_cat'] !== null && $_GET['post_year'] !='All' ) {
+        
+    //     $args['tax_query'] = array(
+    //         array(
+    //             'taxonomy' => 'category',
+    //             'field' => 'slug',
+    //             'include_children' => true,
+    //             'operator'         => 'IN',
+    //             'terms' => $_GET['post_cat'],
+    //         )
+            
+    //     );
+    // }
+    if (isset($_GET["search"]) && $_GET["search"] != null) {
+        $args["s"] = $_GET["search"];
+    }
+
+    
+
+
+    if (isset($_GET['post_cat']) && $_GET['post_cat'] !== null && $_GET['post_cat'] !='all') {
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'category',
                 'field' => 'slug',
+                'include_children' => true,
+                'operator'         => 'IN',
                 'terms' => $_GET['post_cat'],
-
             )
-
+            
         );
     }
+
+
+
+
+    if (isset($_GET['post_year']) && $_GET['post_year'] !== null && $_GET['post_year'] !='all') {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'category_year',
+                'field' => 'slug',
+                'include_children' => true,
+                'operator'         => 'IN',
+                'terms' => $_GET['post_year'],
+            )
+            
+        );
+    }
+    
+
+
+?>
+<form action="" method="GET">
+<select name="post_cat"  required onchange="this.form.submit()">
+                <option value="all" >All Categories</option>
+                    <?php 
+                    $all_categories = '';
+                    if(isset($_GET['post_cat']) && !empty($_GET['post_cat'])){
+                        
+                        $all_categories = $_GET['post_cat'];
+                    }
+                    if(isset($cat) && !empty($cat)){ 
+                    foreach($cat as $key=>$term) { 
+                        if($all_categories == $term->slug){
+                            ?>
+                            <option value="<?php echo $term->slug ?>" selected><?php echo $term->name ?></option>
+                            
+                            <?php 
+                        }else{
+                             ?>
+                             <option value="<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+                             <?php 
+                        }
+                        ?> 
+                        
+                     <?php } } ?>
+                     
+                </select>        
+
+
+
+                <select  name="post_year" required onchange="this.form.submit()">
+                <option value="all">Select Year </option>
+
+                    <?php 
+                    $all_years = '';
+                    if(isset($_GET['post_year']) && !empty($_GET['post_year'])){
+                        $all_years = $_GET['post_year'];
+                    }
+                    if(isset($category_year) && !empty($category_year)){ 
+                    foreach($category_year as $key=>$term) { 
+                        if($all_years == $term->slug){
+                            ?>
+                            <option value="<?php echo $term->slug ?>" selected><?php echo $term->name ?></option>
+                            <?php 
+                        }else{
+                             ?>
+                             <option value="<?php echo $term->slug ?>"><?php echo $term->name ?></option>
+                             <?php 
+                        }
+                        ?> 
+                        
+                     <?php } } ?>
+                </select>
+
+
+
+                
+                <input type="text" name="search" value="<?php echo (isset($_GET['search']) && $_GET['search'] != null) ? $_GET['search'] : ''; ?>" required placeholder="Search...">        
+                <button type="submit">Submit</button>        
+
+
+
+</form>
+<?php 
+
+
+
 
 
     if (!empty($category)) {
@@ -205,6 +325,8 @@ function display_custom_post_type($atts)
         $show .= '<h2>' . $post->post_title . '</h2>';
         $show .= '<h5>' . $post->post_excerpt . '</h5>';
     }
+
+
     $show .= '</div>';
 
 
@@ -220,11 +342,10 @@ function display_custom_post_type($atts)
     //     )
         
     // );
-
     getPagination(10,5);
-
+   
     return $show;
-
+        
     
         
 }

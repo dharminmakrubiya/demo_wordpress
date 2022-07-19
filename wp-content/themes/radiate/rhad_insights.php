@@ -409,6 +409,7 @@
 															foreach ($cat as $catvalue) {
 																echo "<li class='categories__menu-item'><a class='categories__menu-item-link categories__menu-item-arrow collapsed text-coal' href=\"$postid?post_cat=$catvalue->slug\">$catvalue->name</a></li>";
 															}
+															
 															?>
 														</a>
 													</li>

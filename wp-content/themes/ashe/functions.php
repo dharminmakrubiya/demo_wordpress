@@ -945,7 +945,7 @@ function getPagination($totalPages,$limit){
         if(isset($pageid) && $pageid != 1){
             $fiterData['pageid'] = $prev;
             $output .= "";
-            $output .='<a href="?'.http_build_query($fiterData).'"> Prev </a>';
+            $output .='<a href="?'.http_build_query($fiterData).'"> Previous </a>';
             $output .= "";
         }
         for($i=1; $i <= $totalPages; $i++) {
@@ -962,7 +962,8 @@ function getPagination($totalPages,$limit){
         }
         if(isset($pageid) && $pageid != $totalPages) {
             $fiterData['pageid'] = $next;
-            $output .= "<li >";
+			
+            $output .= "";
             $output .='<a  href="?'.http_build_query($fiterData).'"> Next </a>';
             $output .= "";
         }
