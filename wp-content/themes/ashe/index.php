@@ -38,8 +38,9 @@ if ( is_home() ) {
 
 	// Sidebar Right
 	get_template_part( 'templates/sidebars/sidebar', 'right' ); 
-
+	
 	?>
+
 
 </div>
 

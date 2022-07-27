@@ -10,3 +10,4 @@
 
 require_once __DIR__ . '/Shortcodes/tabing_shortcode.php';
 require_once __DIR__ . '/Shortcodes/categories_shortcode.php';
+require_once __DIR__ . '/Shortcodes/custom_field_category_order_number.php';

